@@ -3,13 +3,13 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'jbloit'
-SITENAME = u'AUV3 with gen~\xa0and JUCE'
+SITENAME = u'AUV3 with juce'
 SITEURL = ''
 
 PATH = 'content'
-
+OUTPUT_PATH = '../docs'
 TIMEZONE = 'Europe/Paris'
-
+RELATIVE_URLS = True
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
@@ -29,7 +29,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 3
+DEFAULT_PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
