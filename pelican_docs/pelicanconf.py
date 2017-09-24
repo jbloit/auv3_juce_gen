@@ -11,6 +11,8 @@ OUTPUT_PATH = '../docs'
 TIMEZONE = 'Europe/Paris'
 RELATIVE_URLS = True
 DEFAULT_LANG = u'en'
+THEME = 'pelican-blueidea'
+
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
