@@ -37,13 +37,13 @@
         <array>
           <dict>
             <key>name</key>
-            <string>yourcompany: chorus_auv3</string>
+            <string>jbloit: chorus_auv3</string>
             <key>description</key>
             <string>chorus_auv3</string>
             <key>factoryFunction</key>
             <string>chorus_auv3AUFactoryAUv3</string>
             <key>manufacturer</key>
-            <string>Manu</string>
+            <string>jubl</string>
             <key>type</key>
             <string>aumf</string>
             <key>subtype</key>

@@ -18,5 +18,24 @@ The plan is basically to start off by patching together two existing resources:
 
 * The github repo referenced in [this thread](https://cycling74.com/forums/gen~-juce)
 
+## Steps
+
+### 1. first build
+
+* Following along the first part of the [audio-plugin tutorial](https://juce.com/doc/tutorial_create_projucer_basic_plugin)
+
+* In Max/MSP, opened up the Beap chorus effect, extracted only gen part of it and exported the code.
+I add the generated source to Projucer's source files, in a folder called gen_chorus.
+
+NB: I haven't tried, but there are several export options for the gen code, that let you choose the class name, the plugin type etc.
+
+* Header files: XCode will need header search paths for locating lib files for gen dsp.
+In the projucer, locate the the Exporters tab, and then for each debug and release scheme, add the the following to the Header Search Paths field:
+
+```
+$(PROJECT_DIR)/../../Source/gen_chorus
+$(PROJECT_DIR)/../../Source/gen_chorus/gen_dsp
+```
+
 
 ---
