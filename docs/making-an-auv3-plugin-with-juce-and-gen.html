@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Making an AUV3 plugin with JUCE and gen~</title>
+        <link rel="stylesheet" href="./theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="./">AUV3 with juce </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="./category/juce.html">JUCE</a></li>
+                </ul>
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="./making-an-auv3-plugin-with-juce-and-gen.html" rel="bookmark"
+           title="Permalink to Making an AUV3 plugin with JUCE and gen~">Making an AUV3 plugin with JUCE and gen~</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Sun 24 September 2017</span>
+
+</footer><!-- /.post-info -->      <h1>Goal</h1>
+<p>Make an AUV3 audio effect that I can load into an iOS plugin host for AUV3s, like <a href="http://kymatica.com/Software/AUM">AUM</a>. I want basic MIDI control over one or two parameters of the plugin. I want to implement this using</p>
+<ul>
+<li>
+<p><a href="https://docs.cycling74.com/max7/vignettes/gen_overview">gen</a> : so I can develop in an interactive environment, and generate platform-agnostic code. I guess Faust is also a good candidate, but I have less experience with it.</p>
+</li>
+<li>
+<p><a href="https://juce.com/">JUCE</a> : to compile the plugin and keep the overall code cross-platform. I also know it's reliable for audio. I could use CoreAudio but the C-API is kind of a hassle, is platform-spcific. AudioKit is interesting too, but also very platform-spcific and there's not (yet?) an obvious way to inject c++ code in the audio callback. Juce is powering Max/MSP, that's enough of a guarantee for audio capabilities.</p>
+</li>
+</ul>
+<h2>Background</h2>
+<p>The plan is basically to start off by patching together two existing resources:</p>
+<ul>
+<li>
+<p>Code from this JUCE tutorial: <a href="https://juce.com/doc/tutorial_create_projucer_basic_plugin">Create a basic audio/midi plugin</a></p>
+</li>
+<li>
+<p>The github repo referenced in <a href="https://cycling74.com/forums/gen~-juce">this thread</a></p>
+</li>
+</ul>
+<hr>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

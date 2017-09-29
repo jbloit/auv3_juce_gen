@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="oC8IPS" name="chorus_auv3" displaySplashScreen="1" reportAppUsage="1"
+              splashScreenColour="Dark" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.yourcompany.chorus_auv3" includeBinaryInAppConfig="1"
+              cppLanguageStandard="11" buildVST="0" buildVST3="1" buildAU="0"
+              buildAUv3="1" buildRTAS="0" buildAAX="0" buildStandalone="1"
+              enableIAA="0" pluginName="chorus_auv3" pluginDesc="chorus_auv3"
+              pluginManufacturer="yourcompany" pluginManufacturerCode="Manu"
+              pluginCode="Oc8i" pluginChannelConfigs="" pluginIsSynth="0" pluginWantsMidiIn="1"
+              pluginProducesMidiOut="1" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="chorus_auv3AU" pluginRTASCategory="" aaxIdentifier="com.yourcompany.chorus_auv3"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.1.2">
+  <MAINGROUP id="LAVowq" name="chorus_auv3">
+    <GROUP id="{EE15898B-3B0B-98EC-71B3-8984D5775975}" name="Source">
+      <FILE id="qt6MsR" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="Y60AQE" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="t54R0X" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="GCNlI3" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+    <GROUP id="{6727C4C1-68BA-AFF5-438F-AAA7FE011B83}" name="gen_chorus">
+      <GROUP id="{FC310046-5835-D31E-AA51-F6054DFE9AC0}" name="gen_dsp">
+        <FILE id="xRalI5" name="genlib.cpp" compile="1" resource="0" file="Source/gen_chorus/gen_dsp/genlib.cpp"/>
+        <FILE id="pPeQOk" name="genlib.h" compile="0" resource="0" file="Source/gen_chorus/gen_dsp/genlib.h"/>
+        <FILE id="WwVcIL" name="genlib_common.h" compile="0" resource="0" file="Source/gen_chorus/gen_dsp/genlib_common.h"/>
+        <FILE id="h3Ouys" name="genlib_common_win.h" compile="0" resource="0"
+              file="Source/gen_chorus/gen_dsp/genlib_common_win.h"/>
+        <FILE id="lYx30X" name="genlib_exportfunctions.h" compile="0" resource="0"
+              file="Source/gen_chorus/gen_dsp/genlib_exportfunctions.h"/>
+        <FILE id="YSreLO" name="genlib_ops.h" compile="0" resource="0" file="Source/gen_chorus/gen_dsp/genlib_ops.h"/>
+        <FILE id="pOklSJ" name="genlib_platform.h" compile="0" resource="0"
+              file="Source/gen_chorus/gen_dsp/genlib_platform.h"/>
+        <FILE id="SAKzve" name="json.c" compile="1" resource="0" file="Source/gen_chorus/gen_dsp/json.c"/>
+        <FILE id="nkpEpd" name="json.h" compile="0" resource="0" file="Source/gen_chorus/gen_dsp/json.h"/>
+        <FILE id="FC0rgc" name="json_builder.c" compile="1" resource="0" file="Source/gen_chorus/gen_dsp/json_builder.c"/>
+        <FILE id="pSsCPR" name="json_builder.h" compile="0" resource="0" file="Source/gen_chorus/gen_dsp/json_builder.h"/>
+      </GROUP>
+      <FILE id="yIlqom" name="gen_exported.cpp" compile="1" resource="0"
+            file="Source/gen_chorus/gen_exported.cpp"/>
+      <FILE id="p1dHUg" name="gen_exported.h" compile="0" resource="0" file="Source/gen_chorus/gen_exported.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="chorus_auv3"
+                       headerPath="$(PROJECT_DIR)/../../Source/gen_chorus&#10;$(PROJECT_DIR)/../../Source/gen_chorus/gen_dsp"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="chorus_auv3"
+                       headerPath="$(PROJECT_DIR)/../../Source/gen_chorus&#10;$(PROJECT_DIR)/../../Source/gen_chorus/gen_dsp"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../LIBS/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portraitlandscape"
+                  extraCompilerFlags="-Wall -Wshadow -Wno-missing-field-initializers -Wshadow -Wshorten-64-to-32 -Wstrict-aliasing -Wuninitialized -Wunused-parameter -Wconversion -Wsign-compare -Wint-conversion -Woverloaded-virtual -Wreorder -Wconstant-conversion -Wsign-conversion"
+                  microphonePermissionNeeded="1" iosBackgroundAudio="1" vst3Folder="">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="chorus_auv3"
+                       headerPath="$(PROJECT_DIR)/../../Source/gen_chorus&#10;$(PROJECT_DIR)/../../Source/gen_chorus/gen_dsp"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="chorus_auv3"
+                       headerPath="$(PROJECT_DIR)/../../Source/gen_chorus&#10;$(PROJECT_DIR)/../../Source/gen_chorus/gen_dsp"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../LIBS/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../LIBS/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_IPHONE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+</JUCERPROJECT>
