@@ -63,7 +63,8 @@ void Chorus_auv3AudioProcessorEditor::resized()
     midiVolume.setBounds (40, 30, 20, getHeight() - 60);
 }
 
+
 void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider* slider)
 {
-    processor.noteOnVel = midiVolume.getValue();
+    setParameterValue("roomSize", midiVolume.getValue());
 }

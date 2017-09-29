@@ -37,5 +37,9 @@ $(PROJECT_DIR)/../../Source/gen_chorus
 $(PROJECT_DIR)/../../Source/gen_chorus/gen_dsp
 ```
 
+### 2. declare parameters
+I can load the built AUV3 extension. However when I load the extension in a host (AUM app), it doesn't detect the extension's parameters yet. There is a slider in the interface, that I'd like to be able to map to midi messages.
+
+
 
 ---

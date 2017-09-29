@@ -29,6 +29,41 @@ public:
 
 private:
     
+    //==============================================================================
+    AudioProcessorParameter* getParameter (const String& paramId)
+    {
+        if (AudioProcessor* processor = getAudioProcessor())
+        {
+            const OwnedArray<AudioProcessorParameter>& params = processor->getParameters();
+            
+            for (int i = 0; i < params.size(); ++i)
+            {
+                if (AudioProcessorParameterWithID* param = dynamic_cast<AudioProcessorParameterWithID*> (params[i]))
+                {
+                    if (param->paramID == paramId)
+                        return param;
+                }
+            }
+        }
+        
+        return nullptr;
+    }
+    
+    //==============================================================================
+    float getParameterValue (const String& paramId)
+    {
+        if (AudioProcessorParameter* param = getParameter (paramId))
+            return param->getValue();
+        
+        return 0.0f;
+    }
+    
+    void setParameterValue (const String& paramId, float value)
+    {
+        if (AudioProcessorParameter* param = getParameter (paramId))
+            param->setValueNotifyingHost (value);
+    }
+    
     void sliderValueChanged (Slider* slider) override;
     
     // This reference is provided as a quick way for your editor to
