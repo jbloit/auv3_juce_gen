@@ -170,6 +170,23 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
 
         // ..do something to the data...
     }
+    
+    // ------------------- GEN code starts here
+    assureBufferSize(buffer.getNumSamples());
+    
+    // fill input buffers
+    for (int i = 0; i < GenChorus::num_inputs(); i++) {
+        if (i < totalNumInputChannels) {
+            
+            for (int j = 0; j < m_CurrentBufferSize; j++) {
+                m_InputBuffers[i][j] = buffer.getReadPointer(i)[j];
+            }
+        } else {
+            memset(m_InputBuffers[i], 0, m_CurrentBufferSize *  sizeof(double));
+        }
+    }
+    
+    
 }
 
 //==============================================================================
@@ -202,4 +219,23 @@ void Chorus_auv3AudioProcessor::setStateInformation (const void* data, int sizeI
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new Chorus_auv3AudioProcessor();
+}
+
+//==============================================================================
+// C74 added methods
+
+void Chorus_auv3AudioProcessor::assureBufferSize(long bufferSize)
+{
+    if (bufferSize > m_CurrentBufferSize) {
+        for (int i = 0; i < GenChorus::num_inputs(); i++) {
+            if (m_InputBuffers[i]) delete m_InputBuffers[i];
+            m_InputBuffers[i] = new t_sample[bufferSize];
+        }
+        for (int i = 0; i < GenChorus::num_outputs(); i++) {
+            if (m_OutputBuffers[i]) delete m_OutputBuffers[i];
+            m_OutputBuffers[i] = new t_sample[bufferSize];
+        }
+        
+        m_CurrentBufferSize = bufferSize;
+    }
 }
