@@ -33,7 +33,7 @@ void Chorus_auv3AudioProcessorEditor::paint (Graphics& g)
 
     g.setColour (Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Hello World! This was last built with the AUV3 target", getLocalBounds(), Justification::centred, 1);
+    g.drawFittedText ("Hello World! 0.4.2 : added the gen code", getLocalBounds(), Justification::centred, 1);
 }
 
 void Chorus_auv3AudioProcessorEditor::resized()

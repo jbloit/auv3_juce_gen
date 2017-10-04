@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 63.0, 104.0, 970.0, 524.0 ],
+		"rect" : [ 61.0, 120.0, 970.0, 524.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,20 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"attr" : "exportname",
+					"id" : "obj-6",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 497.0, 230.0, 811.0, 22.0 ],
+					"style" : "",
+					"text_width" : 113.0
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "comment",
@@ -567,7 +581,9 @@
 ,
 					"patching_rect" : [ 317.0, 240.791412, 150.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"exportfolder" : "Untitled:/Users/julien/jbloit/auv3_juce_gen/max/"
+						"exportfolder" : "Untitled:/Users/julien/jbloit/auv3_juce_gen/max/",
+						"exportname" : "GenChorus",
+						"exportscriptargs" : "--name genchorus"
 					}
 ,
 					"style" : "",
@@ -818,7 +834,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 197.0, 184.907501, 86.0, 22.0 ],
+					"patching_rect" : [ 73.0, 216.791412, 70.0, 22.0 ],
 					"style" : "",
 					"text" : "exportcode"
 				}
@@ -922,6 +938,15 @@
 					"destination" : [ "obj-34", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-34", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
 					"midpoints" : [ 543.5, 216.907501, 326.5, 216.907501 ],
 					"source" : [ "obj-7", 0 ]
 				}
@@ -939,10 +964,10 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-2" : [ "Rate", "Rate", 0 ],
 			"obj-28" : [ "Center[1]", "Center", 0 ],
+			"obj-1" : [ "Width[1]", "Width", 0 ],
 			"obj-3" : [ "Regen[1]", "Regen", 0 ],
-			"obj-1" : [ "Width[1]", "Width", 0 ]
+			"obj-2" : [ "Rate", "Rate", 0 ]
 		}
 ,
 		"dependency_cache" : [  ],
