@@ -22,7 +22,7 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), m_CurrentBufferSize(0)
 #endif
 {
     
@@ -185,8 +185,7 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
             memset(m_InputBuffers[i], 0, m_CurrentBufferSize *  sizeof(double));
         }
     }
-    
-    
+
 }
 
 //==============================================================================

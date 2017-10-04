@@ -73,7 +73,13 @@ Getting confused here, too many variables. I'll start fresh with a new plugin co
 
 3. **init the gen code in processor constructor**  ok
 
-4. **add process code**
+4. **add buffer filling code**: crash happens now. It happens either with the standalone or extension targets. Seemingly random occurance, more that 50% the time.
+
+5. **found the bug**: I wasn't initializing ```m_CurrentBufferSize``` in the constructor.
+
+
+
+
 
 
 
