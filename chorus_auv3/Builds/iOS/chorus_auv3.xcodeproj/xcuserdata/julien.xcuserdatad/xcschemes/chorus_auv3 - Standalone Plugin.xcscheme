@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "57CD285FB700BEB84378E635"
+               BlueprintIdentifier = "7DA1379D7824675EF6E3D6BC"
                BuildableName = "chorus_auv3.app"
                BlueprintName = "chorus_auv3 - Standalone Plugin"
                ReferencedContainer = "container:chorus_auv3.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "57CD285FB700BEB84378E635"
+            BlueprintIdentifier = "7DA1379D7824675EF6E3D6BC"
             BuildableName = "chorus_auv3.app"
             BlueprintName = "chorus_auv3 - Standalone Plugin"
             ReferencedContainer = "container:chorus_auv3.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "57CD285FB700BEB84378E635"
+            BlueprintIdentifier = "7DA1379D7824675EF6E3D6BC"
             BuildableName = "chorus_auv3.app"
             BlueprintName = "chorus_auv3 - Standalone Plugin"
             ReferencedContainer = "container:chorus_auv3.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "57CD285FB700BEB84378E635"
+            BlueprintIdentifier = "7DA1379D7824675EF6E3D6BC"
             BuildableName = "chorus_auv3.app"
             BlueprintName = "chorus_auv3 - Standalone Plugin"
             ReferencedContainer = "container:chorus_auv3.xcodeproj">

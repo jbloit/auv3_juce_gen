@@ -62,6 +62,13 @@ Since this fails, I'm trying to run the code from the example repo from C74. I'm
 
 So what I'll do is take this code as a starting point now, basically copy the plugin processor code and the gen exported code into chorus project: ie replace the plugin part of the code but keep the processor part of the project (the chorus gen effect)
 
+-> the resulting auv3 never loads...
+
+### 4. Fresh start
+Getting confused here, too many variables. I'll start fresh with a new plugin code, without gen, that loads. Then incrementally incorporate gen code to see when things stop working.
+
+
+
 
 
 

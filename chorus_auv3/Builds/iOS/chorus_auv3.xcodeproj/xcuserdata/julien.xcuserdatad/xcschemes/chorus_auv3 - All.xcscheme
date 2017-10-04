@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AEE62DA75510E902B2C692A3"
+               BlueprintIdentifier = "7DAD7F8E75C9F17CE650C296"
                BuildableName = "chorus_auv3 - All"
                BlueprintName = "chorus_auv3 - All"
                ReferencedContainer = "container:chorus_auv3.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AEE62DA75510E902B2C692A3"
+            BlueprintIdentifier = "7DAD7F8E75C9F17CE650C296"
             BuildableName = "chorus_auv3 - All"
             BlueprintName = "chorus_auv3 - All"
             ReferencedContainer = "container:chorus_auv3.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AEE62DA75510E902B2C692A3"
+            BlueprintIdentifier = "7DAD7F8E75C9F17CE650C296"
             BuildableName = "chorus_auv3 - All"
             BlueprintName = "chorus_auv3 - All"
             ReferencedContainer = "container:chorus_auv3.xcodeproj">
