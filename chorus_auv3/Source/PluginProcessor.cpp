@@ -25,6 +25,23 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
                        )
 #endif
 {
+    
+    // use a default samplerate and vector size here, reset it later
+    m_C74PluginState = (CommonState *)GenChorus::create(44100, 64);
+    GenChorus::reset(m_C74PluginState);
+    
+    m_InputBuffers = new t_sample *[GenChorus::num_inputs()];
+    m_OutputBuffers = new t_sample *[GenChorus::num_outputs()];
+    
+    for (int i = 0; i < GenChorus::num_inputs(); i++) {
+        m_InputBuffers[i] = NULL;
+    }
+    for (int i = 0; i < GenChorus::num_outputs(); i++) {
+        m_OutputBuffers[i] = NULL;
+    }
+    
+    // Note: this is only displayed in console when running the standalone target. Not the extension target within host.
+    std::cout << "constructor";
 }
 
 Chorus_auv3AudioProcessor::~Chorus_auv3AudioProcessor()

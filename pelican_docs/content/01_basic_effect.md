@@ -71,7 +71,7 @@ Getting confused here, too many variables. I'll start fresh with a new plugin co
 
 2. **Add the gen code**: Only add it to the target and compile.
 
-
+3. **init the gen code in processor constructor** 
 
 
 
