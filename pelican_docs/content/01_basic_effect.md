@@ -20,6 +20,8 @@ The plan is basically to start off by patching together two existing resources:
 
 ## Steps
 
+NOTE: the steps correspond to tags in the repo.
+
 ### 1. first build
 
 * Following along the first part of the [audio-plugin tutorial](https://juce.com/doc/tutorial_create_projucer_basic_plugin)
@@ -39,6 +41,33 @@ $(PROJECT_DIR)/../../Source/gen_chorus/gen_dsp
 
 ### 2. declare parameters
 I can load the built AUV3 extension. However when I load the extension in a host (AUM app), it doesn't detect the extension's parameters yet. There is a slider in the interface, that I'd like to be able to map to midi messages.
+
+The key basically holds in replacing the simple float parameter into an AudioParameterFloat
+
+```
+AudioParameterFloat* noteVelocity;
+```
+Then adding the boiler plate code for setter and getter, for state storing with the host, instantiation in the processor's constructor etc. I simply copied all that from the AUV3 synth demo code that shipped with juce.
+
+### 3. process block with gen code
+Following the example from the c74 repo, I can build the AUV3 and load the extention in AUM.
+But it crashes as soon as the loading is done.
+
+Q1: is this happening when building and loading as a VST3 instead?
+
+->>  Weeeelll  actually, it's random. Sometimes it loads, sometimes not.
+
+
+Since this fails, I'm trying to run the code from the example repo from C74. I'm able to run it, and it load consistently in the plugin host.
+
+So what I'll do is take this code as a starting point now, basically copy the plugin processor code and the gen exported code into chorus project: ie replace the plugin part of the code but keep the processor part of the project (the chorus gen effect)
+
+
+
+
+
+
+
 
 
 
