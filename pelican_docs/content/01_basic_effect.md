@@ -67,6 +67,14 @@ So what I'll do is take this code as a starting point now, basically copy the pl
 ### 4. Fresh start
 Getting confused here, too many variables. I'll start fresh with a new plugin code, without gen, that loads. Then incrementally incorporate gen code to see when things stop working.
 
+1. **Loads**: a fresh plugin is compiled, it loads. (note that I fist need to compile it and install it as a standalone, so that AUM registers it. Apparently though, the subsequent code changes don't require that standalone step in order to take effect)
+
+2. **Add the gen code**: Only add it to the target and compile.
+
+
+
+
+
 
 
 

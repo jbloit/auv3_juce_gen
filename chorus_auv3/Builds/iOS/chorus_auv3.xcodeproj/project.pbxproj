@@ -59,40 +59,40 @@
 		EDAFC5172FC06C9B6088DC15 /* include_juce_cryptography.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21073BFFE5EF1C3C179B92F7 /* include_juce_cryptography.mm */; };
 		EF706EE1A5C48B2572C61F1E /* include_juce_audio_plugin_client_VST_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D317D235DD5A549227B1243F /* include_juce_audio_plugin_client_VST_utils.mm */; };
 		F1A8B5EB94689E3A4E906553 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8B915B08823462883393A /* AVFoundation.framework */; };
-		F91B85711F84C8290071937A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910B879B20C30D2FBF149908 /* Accelerate.framework */; };
-		F91B85721F84C8290071937A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE17CD703DC40F1BEFF6E36 /* AudioToolbox.framework */; };
-		F91B85731F84C8290071937A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8B915B08823462883393A /* AVFoundation.framework */; };
-		F91B85741F84C8290071937A /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5120F759B65CBAD38AB265 /* AVKit.framework */; };
-		F91B85751F84C8290071937A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5330A1E6727EA8A5D6789214 /* CoreAudio.framework */; };
-		F91B85761F84C8290071937A /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA8B9C5AB81274ED4CC575E /* CoreAudioKit.framework */; };
-		F91B85771F84C8290071937A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920A3D550521C2402994D582 /* CoreGraphics.framework */; };
-		F91B85781F84C8290071937A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 564ABE36FB4424A497766A27 /* CoreImage.framework */; };
-		F91B85791F84C8290071937A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18533D6547CE69504033B5FF /* CoreMedia.framework */; };
-		F91B857A1F84C8290071937A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D505672DD7334516BDB4EDA /* CoreMIDI.framework */; };
-		F91B857B1F84C8290071937A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91156797241FFAB60B19612D /* CoreText.framework */; };
-		F91B857C1F84C8290071937A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6259756A3D11C97873FF9704 /* Foundation.framework */; };
-		F91B857D1F84C8290071937A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D39E12071EFA72030D40D4E9 /* OpenGLES.framework */; };
-		F91B857E1F84C8290071937A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F2E19CF1E38BB379D834B36 /* QuartzCore.framework */; };
-		F91B857F1F84C8290071937A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69E37B28BB9039BBCEAEFA4 /* UIKit.framework */; };
+		F91B85DD1F84CF3B0071937A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910B879B20C30D2FBF149908 /* Accelerate.framework */; };
+		F91B85DE1F84CF3B0071937A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE17CD703DC40F1BEFF6E36 /* AudioToolbox.framework */; };
+		F91B85DF1F84CF3B0071937A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8B915B08823462883393A /* AVFoundation.framework */; };
+		F91B85E01F84CF3B0071937A /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5120F759B65CBAD38AB265 /* AVKit.framework */; };
+		F91B85E11F84CF3B0071937A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5330A1E6727EA8A5D6789214 /* CoreAudio.framework */; };
+		F91B85E21F84CF3B0071937A /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA8B9C5AB81274ED4CC575E /* CoreAudioKit.framework */; };
+		F91B85E31F84CF3B0071937A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920A3D550521C2402994D582 /* CoreGraphics.framework */; };
+		F91B85E41F84CF3B0071937A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 564ABE36FB4424A497766A27 /* CoreImage.framework */; };
+		F91B85E51F84CF3B0071937A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18533D6547CE69504033B5FF /* CoreMedia.framework */; };
+		F91B85E61F84CF3B0071937A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D505672DD7334516BDB4EDA /* CoreMIDI.framework */; };
+		F91B85E71F84CF3B0071937A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91156797241FFAB60B19612D /* CoreText.framework */; };
+		F91B85E81F84CF3B0071937A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6259756A3D11C97873FF9704 /* Foundation.framework */; };
+		F91B85E91F84CF3B0071937A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D39E12071EFA72030D40D4E9 /* OpenGLES.framework */; };
+		F91B85EA1F84CF3B0071937A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F2E19CF1E38BB379D834B36 /* QuartzCore.framework */; };
+		F91B85EB1F84CF3B0071937A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69E37B28BB9039BBCEAEFA4 /* UIKit.framework */; };
 		FB21D1EC410F1BCC955C7B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6259756A3D11C97873FF9704 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F91B85801F84C8290071937A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 11E63D90200B71960F475607 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B651D3403BA579B06B8608B6;
-			remoteInfo = "chorus_auv3 - AUv3 AppExtension";
-		};
-		F91B85811F84C8290071937A /* PBXContainerItemProxy */ = {
+		F91B85EC1F84CF3C0071937A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 11E63D90200B71960F475607 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 12AC1BED1C30CC945639817E;
 			remoteInfo = "chorus_auv3 - Shared Code";
 		};
-		F91B85821F84C82A0071937A /* PBXContainerItemProxy */ = {
+		F91B85ED1F84CF3C0071937A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11E63D90200B71960F475607 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B651D3403BA579B06B8608B6;
+			remoteInfo = "chorus_auv3 - AUv3 AppExtension";
+		};
+		F91B85EE1F84CF3D0071937A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 11E63D90200B71960F475607 /* Project object */;
 			proxyType = 1;
@@ -205,21 +205,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F91B85711F84C8290071937A /* Accelerate.framework in Frameworks */,
-				F91B85721F84C8290071937A /* AudioToolbox.framework in Frameworks */,
-				F91B85731F84C8290071937A /* AVFoundation.framework in Frameworks */,
-				F91B85741F84C8290071937A /* AVKit.framework in Frameworks */,
-				F91B85751F84C8290071937A /* CoreAudio.framework in Frameworks */,
-				F91B85761F84C8290071937A /* CoreAudioKit.framework in Frameworks */,
-				F91B85771F84C8290071937A /* CoreGraphics.framework in Frameworks */,
-				F91B85781F84C8290071937A /* CoreImage.framework in Frameworks */,
-				F91B85791F84C8290071937A /* CoreMedia.framework in Frameworks */,
-				F91B857A1F84C8290071937A /* CoreMIDI.framework in Frameworks */,
-				F91B857B1F84C8290071937A /* CoreText.framework in Frameworks */,
-				F91B857C1F84C8290071937A /* Foundation.framework in Frameworks */,
-				F91B857D1F84C8290071937A /* OpenGLES.framework in Frameworks */,
-				F91B857E1F84C8290071937A /* QuartzCore.framework in Frameworks */,
-				F91B857F1F84C8290071937A /* UIKit.framework in Frameworks */,
+				F91B85DD1F84CF3B0071937A /* Accelerate.framework in Frameworks */,
+				F91B85DE1F84CF3B0071937A /* AudioToolbox.framework in Frameworks */,
+				F91B85DF1F84CF3B0071937A /* AVFoundation.framework in Frameworks */,
+				F91B85E01F84CF3B0071937A /* AVKit.framework in Frameworks */,
+				F91B85E11F84CF3B0071937A /* CoreAudio.framework in Frameworks */,
+				F91B85E21F84CF3B0071937A /* CoreAudioKit.framework in Frameworks */,
+				F91B85E31F84CF3B0071937A /* CoreGraphics.framework in Frameworks */,
+				F91B85E41F84CF3B0071937A /* CoreImage.framework in Frameworks */,
+				F91B85E51F84CF3B0071937A /* CoreMedia.framework in Frameworks */,
+				F91B85E61F84CF3B0071937A /* CoreMIDI.framework in Frameworks */,
+				F91B85E71F84CF3B0071937A /* CoreText.framework in Frameworks */,
+				F91B85E81F84CF3B0071937A /* Foundation.framework in Frameworks */,
+				F91B85E91F84CF3B0071937A /* OpenGLES.framework in Frameworks */,
+				F91B85EA1F84CF3B0071937A /* QuartzCore.framework in Frameworks */,
+				F91B85EB1F84CF3B0071937A /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,17 +570,17 @@
 		DC9212D2546267B15F83FC49 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 12AC1BED1C30CC945639817E /* chorus_auv3 - Shared Code */;
-			targetProxy = F91B85811F84C8290071937A /* PBXContainerItemProxy */;
+			targetProxy = F91B85EC1F84CF3C0071937A /* PBXContainerItemProxy */;
 		};
 		E3C11B7783EA0EC8E384BE20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B651D3403BA579B06B8608B6 /* chorus_auv3 - AUv3 AppExtension */;
-			targetProxy = F91B85801F84C8290071937A /* PBXContainerItemProxy */;
+			targetProxy = F91B85ED1F84CF3C0071937A /* PBXContainerItemProxy */;
 		};
 		EFB9C6F8F1088C253D143B1C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7DA1379D7824675EF6E3D6BC /* chorus_auv3 - Standalone Plugin */;
-			targetProxy = F91B85821F84C82A0071937A /* PBXContainerItemProxy */;
+			targetProxy = F91B85EE1F84CF3D0071937A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -708,6 +708,49 @@
 				);
 				INFOPLIST_FILE = "Info-AUv3_AppExtension.plist";
 				INFOPLIST_PREPROCESS = NO;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
+					"<plist>",
+					"<dict>",
+					"<key>LSRequiresIPhoneOS</key>",
+					"<true/>",
+					"<key>UIViewControllerBasedStatusBarAppearance</key>",
+					"<false/>",
+					"<key>CFBundleExecutable</key>",
+					"<string>${EXECUTABLE_NAME}</string>",
+					"<key>CFBundleIdentifier</key>",
+					"<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>",
+					"<key>CFBundleName</key>",
+					"<string>chorus_auv3</string>",
+					"<key>CFBundleDisplayName</key>",
+					"<key>CFBundlePackageType</key>",
+					"<string>APPL</string>",
+					"<key>CFBundleSignature</key>",
+					"<string>????</string>",
+					"<key>CFBundleShortVersionString</key>",
+					"<string>1.0.0</string>",
+					"<key>CFBundleVersion</key>",
+					"<key>NSHumanReadableCopyright</key>",
+					"<string></string>",
+					"<key>NSHighResolutionCapable</key>",
+					"<key>UIRequiresFullScreen</key>",
+					"<key>UIStatusBarHidden</key>",
+					"<key>NSMicrophoneUsageDescription</key>",
+					"<string>Audio",
+					FX,
+					needs,
+					mic,
+					"input.</string>",
+					"<key>UISupportedInterfaceOrientations</key>",
+					"<array>",
+					"<string>UIInterfaceOrientationPortrait</string>",
+					"<string>UIInterfaceOrientationLandscapeLeft</string>",
+					"<string>UIInterfaceOrientationLandscapeRight</string>",
+					"</array>",
+					"<key>UIBackgroundModes</key>",
+					"<array/>",
+					"</dict>",
+					"</plist>",
+				);
 				OTHER_LDFLAGS = "-lchorus_auv3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbloit.chorus_auv3.chorus_auv3AUv3;
 				USE_HEADERMAP = NO;
@@ -750,6 +793,49 @@
 				);
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
 				INFOPLIST_PREPROCESS = NO;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
+					"<plist>",
+					"<dict>",
+					"<key>LSRequiresIPhoneOS</key>",
+					"<true/>",
+					"<key>UIViewControllerBasedStatusBarAppearance</key>",
+					"<false/>",
+					"<key>CFBundleExecutable</key>",
+					"<string>${EXECUTABLE_NAME}</string>",
+					"<key>CFBundleIdentifier</key>",
+					"<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>",
+					"<key>CFBundleName</key>",
+					"<string>chorus_auv3</string>",
+					"<key>CFBundleDisplayName</key>",
+					"<key>CFBundlePackageType</key>",
+					"<string>APPL</string>",
+					"<key>CFBundleSignature</key>",
+					"<string>????</string>",
+					"<key>CFBundleShortVersionString</key>",
+					"<string>1.0.0</string>",
+					"<key>CFBundleVersion</key>",
+					"<key>NSHumanReadableCopyright</key>",
+					"<string></string>",
+					"<key>NSHighResolutionCapable</key>",
+					"<key>UIRequiresFullScreen</key>",
+					"<key>UIStatusBarHidden</key>",
+					"<key>NSMicrophoneUsageDescription</key>",
+					"<string>Audio",
+					FX,
+					needs,
+					mic,
+					"input.</string>",
+					"<key>UISupportedInterfaceOrientations</key>",
+					"<array>",
+					"<string>UIInterfaceOrientationPortrait</string>",
+					"<string>UIInterfaceOrientationLandscapeLeft</string>",
+					"<string>UIInterfaceOrientationLandscapeRight</string>",
+					"</array>",
+					"<key>UIBackgroundModes</key>",
+					"<array/>",
+					"</dict>",
+					"</plist>",
+				);
 				OTHER_LDFLAGS = "-lchorus_auv3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbloit.chorus_auv3;
 				USE_HEADERMAP = NO;
@@ -879,6 +965,49 @@
 				);
 				INFOPLIST_FILE = "Info-AUv3_AppExtension.plist";
 				INFOPLIST_PREPROCESS = NO;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
+					"<plist>",
+					"<dict>",
+					"<key>LSRequiresIPhoneOS</key>",
+					"<true/>",
+					"<key>UIViewControllerBasedStatusBarAppearance</key>",
+					"<false/>",
+					"<key>CFBundleExecutable</key>",
+					"<string>${EXECUTABLE_NAME}</string>",
+					"<key>CFBundleIdentifier</key>",
+					"<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>",
+					"<key>CFBundleName</key>",
+					"<string>chorus_auv3</string>",
+					"<key>CFBundleDisplayName</key>",
+					"<key>CFBundlePackageType</key>",
+					"<string>APPL</string>",
+					"<key>CFBundleSignature</key>",
+					"<string>????</string>",
+					"<key>CFBundleShortVersionString</key>",
+					"<string>1.0.0</string>",
+					"<key>CFBundleVersion</key>",
+					"<key>NSHumanReadableCopyright</key>",
+					"<string></string>",
+					"<key>NSHighResolutionCapable</key>",
+					"<key>UIRequiresFullScreen</key>",
+					"<key>UIStatusBarHidden</key>",
+					"<key>NSMicrophoneUsageDescription</key>",
+					"<string>Audio",
+					FX,
+					needs,
+					mic,
+					"input.</string>",
+					"<key>UISupportedInterfaceOrientations</key>",
+					"<array>",
+					"<string>UIInterfaceOrientationPortrait</string>",
+					"<string>UIInterfaceOrientationLandscapeLeft</string>",
+					"<string>UIInterfaceOrientationLandscapeRight</string>",
+					"</array>",
+					"<key>UIBackgroundModes</key>",
+					"<array/>",
+					"</dict>",
+					"</plist>",
+				);
 				OTHER_LDFLAGS = "-lchorus_auv3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbloit.chorus_auv3.chorus_auv3AUv3;
 				USE_HEADERMAP = NO;
@@ -922,6 +1051,49 @@
 				);
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
 				INFOPLIST_PREPROCESS = NO;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
+					"<plist>",
+					"<dict>",
+					"<key>LSRequiresIPhoneOS</key>",
+					"<true/>",
+					"<key>UIViewControllerBasedStatusBarAppearance</key>",
+					"<false/>",
+					"<key>CFBundleExecutable</key>",
+					"<string>${EXECUTABLE_NAME}</string>",
+					"<key>CFBundleIdentifier</key>",
+					"<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>",
+					"<key>CFBundleName</key>",
+					"<string>chorus_auv3</string>",
+					"<key>CFBundleDisplayName</key>",
+					"<key>CFBundlePackageType</key>",
+					"<string>APPL</string>",
+					"<key>CFBundleSignature</key>",
+					"<string>????</string>",
+					"<key>CFBundleShortVersionString</key>",
+					"<string>1.0.0</string>",
+					"<key>CFBundleVersion</key>",
+					"<key>NSHumanReadableCopyright</key>",
+					"<string></string>",
+					"<key>NSHighResolutionCapable</key>",
+					"<key>UIRequiresFullScreen</key>",
+					"<key>UIStatusBarHidden</key>",
+					"<key>NSMicrophoneUsageDescription</key>",
+					"<string>Audio",
+					FX,
+					needs,
+					mic,
+					"input.</string>",
+					"<key>UISupportedInterfaceOrientations</key>",
+					"<array>",
+					"<string>UIInterfaceOrientationPortrait</string>",
+					"<string>UIInterfaceOrientationLandscapeLeft</string>",
+					"<string>UIInterfaceOrientationLandscapeRight</string>",
+					"</array>",
+					"<key>UIBackgroundModes</key>",
+					"<array/>",
+					"</dict>",
+					"</plist>",
+				);
 				OTHER_LDFLAGS = "-lchorus_auv3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbloit.chorus_auv3;
 				USE_HEADERMAP = NO;
