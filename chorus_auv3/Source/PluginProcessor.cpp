@@ -48,6 +48,7 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
 
 Chorus_auv3AudioProcessor::~Chorus_auv3AudioProcessor()
 {
+    GenChorus::destroy(m_C74PluginState);
 }
 
 //==============================================================================
@@ -155,7 +156,7 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
     const int totalNumInputChannels  = getTotalNumInputChannels();
     const int totalNumOutputChannels = getTotalNumOutputChannels();
     
-    float rateParam = rate->get();
+    
     
     
     // ------------------- GEN code starts here
@@ -172,6 +173,12 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
             memset(m_InputBuffers[i], 0, m_CurrentBufferSize *  sizeof(double));
         }
     }
+    
+    float rateParam = rate->get();
+    GenChorus::setparameter(m_C74PluginState, 0, 870.0, NULL);
+    GenChorus::setparameter(m_C74PluginState, 1, 430.0, NULL);
+    GenChorus::setparameter(m_C74PluginState, 2, 0.811, NULL);
+    GenChorus::setparameter(m_C74PluginState, 3, rateParam, NULL);
     
     // process audio
     GenChorus::perform(m_C74PluginState,
