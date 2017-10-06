@@ -40,6 +40,8 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
         m_OutputBuffers[i] = NULL;
     }
     
+    addParameter (rate = new AudioParameterFloat ("rate", "Rate", 0.0f, 10.0f, 1.0f));
+    
     // Note: this is only displayed in console when running the standalone target. Not the extension target within host.
     std::cout << "constructor";
 }
@@ -153,6 +155,9 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
     const int totalNumInputChannels  = getTotalNumInputChannels();
     const int totalNumOutputChannels = getTotalNumOutputChannels();
     
+    float rateParam = rate->get();
+    
+    
     // ------------------- GEN code starts here
     assureBufferSize(buffer.getNumSamples());
     
@@ -206,12 +211,20 @@ void Chorus_auv3AudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+    
+    MemoryOutputStream stream (destData, true);
+    
+    stream.writeFloat (*rate);
 }
 
 void Chorus_auv3AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    
+    MemoryInputStream stream (data, static_cast<size_t> (sizeInBytes), false);
+    
+    rate->setValueNotifyingHost (stream.readFloat());
 }
 
 //==============================================================================

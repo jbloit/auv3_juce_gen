@@ -77,14 +77,7 @@ Getting confused here, too many variables. I'll start fresh with a new plugin co
 
 5. **found the bug**: I wasn't initializing ```m_CurrentBufferSize``` in the constructor.
 
-
-
-
-
-
-
-
-
+### 5. Parameters
 
 
 
