@@ -40,7 +40,10 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
         m_OutputBuffers[i] = NULL;
     }
     
-    addParameter (rate = new AudioParameterFloat ("rate", "Rate", 0.0f, 10.0f, 1.0f));
+    addParameter (rate = new AudioParameterFloat ("rate", "Rate", 0.0f, 10.0f, 0.0f));
+     addParameter (fb = new AudioParameterFloat ("fb", "Feedback", 0.0f, 1.0f, 0.0f));
+     addParameter (bw = new AudioParameterFloat ("bw", "band width", 0.0f, 20000.0, 0.0f));
+     addParameter (center = new AudioParameterFloat ("center", "Center", 0.0f, 2000.0, 0.0f));
     
     // Note: this is only displayed in console when running the standalone target. Not the extension target within host.
     std::cout << "constructor";
@@ -174,11 +177,11 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         }
     }
     
-    float rateParam = rate->get();
-    GenChorus::setparameter(m_C74PluginState, 0, 870.0, NULL);
-    GenChorus::setparameter(m_C74PluginState, 1, 430.0, NULL);
-    GenChorus::setparameter(m_C74PluginState, 2, 0.811, NULL);
-    GenChorus::setparameter(m_C74PluginState, 3, rateParam, NULL);
+
+//    GenChorus::setparameter(m_C74PluginState, 0, bw->get(), NULL);
+    GenChorus::setparameter(m_C74PluginState, 1, center->get(), NULL);
+    GenChorus::setparameter(m_C74PluginState, 2, fb->get(), NULL);
+//    GenChorus::setparameter(m_C74PluginState, 3, rate->get(), NULL);
     
     // process audio
     GenChorus::perform(m_C74PluginState,

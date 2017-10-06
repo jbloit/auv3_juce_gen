@@ -62,6 +62,9 @@ public:
     
     // Gen chorus parameter
     AudioParameterFloat* rate;
+     AudioParameterFloat* center;
+     AudioParameterFloat* bw;
+     AudioParameterFloat* fb;
     
     
 protected:

@@ -28,6 +28,9 @@ public:
     void resized() override;
     
     Slider rateSlider;
+     Slider centerSlider;
+     Slider bwSlider;
+     Slider fbSlider;
 
 private:
     // This reference is provided as a quick way for your editor to
@@ -35,6 +38,7 @@ private:
     Chorus_auv3AudioProcessor& processor;
     void timerCallback() override;
     void sliderValueChanged (Slider*) override;
+
 
     
     AudioProcessorParameter* getParameter (const String& paramId);

@@ -20,10 +20,24 @@ Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3Aud
     // editor's size to whatever you need it to be.
     
     rateSlider.setValue (getParameterValue ("rate"), NotificationType::dontSendNotification);
-    
     rateSlider.addListener (this);
     rateSlider.setRange (0.0, 1.0);
     addAndMakeVisible (rateSlider);
+    
+    centerSlider.setValue (getParameterValue ("center"), NotificationType::dontSendNotification);
+    centerSlider.addListener (this);
+    centerSlider.setRange (0.0, 1.0);
+    addAndMakeVisible (centerSlider);
+    
+    bwSlider.setValue (getParameterValue ("bw"), NotificationType::dontSendNotification);
+    bwSlider.addListener (this);
+    bwSlider.setRange (0.0, 1.0);
+    addAndMakeVisible (bwSlider);
+    
+    fbSlider.setValue (getParameterValue ("fb"), NotificationType::dontSendNotification);
+    fbSlider.addListener (this);
+    fbSlider.setRange (0.0, 1.0);
+    addAndMakeVisible (fbSlider);
     
     setSize (600, 400);
     startTimer (100);
@@ -56,16 +70,39 @@ void Chorus_auv3AudioProcessorEditor::resized(){
     int buttonHeight = guiElementAreaHeight - margin;
     
     rateSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
+    centerSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
+    bwSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
+    fbSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
 }
 
 
-void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider*){
-    setParameterValue ("rate", rateSlider.getValue());
+void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider* slider){
+    
+    if (slider == &rateSlider){
+        setParameterValue ("rate", rateSlider.getValue());
+    }
+    
+    if (slider == &fbSlider){
+        setParameterValue ("fb", fbSlider.getValue());
+    }
+    
+    if (slider == &centerSlider){
+        setParameterValue ("center", centerSlider.getValue());
+    }
+    
+    if (slider == &bwSlider){
+        setParameterValue ("bw", bwSlider.getValue());
+    }
+    
+
 }
 
 void Chorus_auv3AudioProcessorEditor::timerCallback()  {
     
     rateSlider.setValue (getParameterValue ("rate"), NotificationType::dontSendNotification);
+    centerSlider.setValue (getParameterValue ("center"), NotificationType::dontSendNotification);
+    bwSlider.setValue (getParameterValue ("bw"), NotificationType::dontSendNotification);
+    fbSlider.setValue (getParameterValue ("fb"), NotificationType::dontSendNotification);
 }
 
 //==============================================================================
