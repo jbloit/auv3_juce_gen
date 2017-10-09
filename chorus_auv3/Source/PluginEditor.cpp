@@ -14,30 +14,16 @@
 
 //==============================================================================
 Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor& p)
-: AudioProcessorEditor (&p), processor (p), rateSlider (Slider::LinearHorizontal, Slider::NoTextBox)
+: AudioProcessorEditor (&p), processor (p), knobSlider (Slider::LinearHorizontal, Slider::NoTextBox)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     
-    rateSlider.setValue (getParameterValue ("rate"), NotificationType::dontSendNotification);
-    rateSlider.addListener (this);
-    rateSlider.setRange (0.0, 1.0);
-    addAndMakeVisible (rateSlider);
+    knobSlider.setValue (getParameterValue ("knob"), NotificationType::dontSendNotification);
+    knobSlider.addListener (this);
+    knobSlider.setRange (0.0, 1.0);
+    addAndMakeVisible (knobSlider);
     
-    centerSlider.setValue (getParameterValue ("center"), NotificationType::dontSendNotification);
-    centerSlider.addListener (this);
-    centerSlider.setRange (0.0, 1.0);
-    addAndMakeVisible (centerSlider);
-    
-    bwSlider.setValue (getParameterValue ("bw"), NotificationType::dontSendNotification);
-    bwSlider.addListener (this);
-    bwSlider.setRange (0.0, 1.0);
-    addAndMakeVisible (bwSlider);
-    
-    fbSlider.setValue (getParameterValue ("fb"), NotificationType::dontSendNotification);
-    fbSlider.addListener (this);
-    fbSlider.setRange (0.0, 1.0);
-    addAndMakeVisible (fbSlider);
     
     setSize (600, 400);
     startTimer (100);
@@ -55,7 +41,7 @@ void Chorus_auv3AudioProcessorEditor::paint (Graphics& g)
 
     g.setColour (Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Hello World! this is a chorus built with gen", getLocalBounds(), Justification::centred, 1);
+    g.drawFittedText ("This is an effect built with gen", getLocalBounds(), Justification::centred, 1);
 }
 
 void Chorus_auv3AudioProcessorEditor::resized(){
@@ -69,40 +55,17 @@ void Chorus_auv3AudioProcessorEditor::resized(){
     
     int buttonHeight = guiElementAreaHeight - margin;
     
-    rateSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
-    centerSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
-    bwSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
-    fbSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
+    knobSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
 }
 
-
 void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider* slider){
-    
-    if (slider == &rateSlider){
-        setParameterValue ("rate", rateSlider.getValue());
+    if (slider == &knobSlider){
+        setParameterValue ("knob", knobSlider.getValue());
     }
-    
-    if (slider == &fbSlider){
-        setParameterValue ("fb", fbSlider.getValue());
-    }
-    
-    if (slider == &centerSlider){
-        setParameterValue ("center", centerSlider.getValue());
-    }
-    
-    if (slider == &bwSlider){
-        setParameterValue ("bw", bwSlider.getValue());
-    }
-    
-
 }
 
 void Chorus_auv3AudioProcessorEditor::timerCallback()  {
-    
-    rateSlider.setValue (getParameterValue ("rate"), NotificationType::dontSendNotification);
-    centerSlider.setValue (getParameterValue ("center"), NotificationType::dontSendNotification);
-    bwSlider.setValue (getParameterValue ("bw"), NotificationType::dontSendNotification);
-    fbSlider.setValue (getParameterValue ("fb"), NotificationType::dontSendNotification);
+    knobSlider.setValue (getParameterValue ("knob"), NotificationType::dontSendNotification);
 }
 
 //==============================================================================

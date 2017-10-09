@@ -61,11 +61,7 @@ public:
     
     
     // Gen chorus parameter
-    AudioParameterFloat* rate;
-     AudioParameterFloat* center;
-     AudioParameterFloat* bw;
-     AudioParameterFloat* fb;
-    
+    AudioParameterFloat* knob;
     
 protected:
     // c74: since Juce does float sample processing and Gen offers double sample

@@ -1,8 +1,3 @@
-Title: Making an AUV3 plugin with JUCE and gen~
-Date: 2017-09-24 18:32
-Category: JUCE
-
-
 # Goal
 Make an AUV3 audio effect that I can load into an iOS plugin host for AUV3s, like [AUM](http://kymatica.com/Software/AUM). I want basic MIDI control over one or two parameters of the plugin. I want to implement this using
 
@@ -78,6 +73,22 @@ Getting confused here, too many variables. I'll start fresh with a new plugin co
 5. **found the bug**: I wasn't initializing ```m_CurrentBufferSize``` in the constructor.
 
 ### 5. Parameters
+
+1. Added GUI for the other gen parameters. It's sort of functional, I but no effort in the layout, so it's plain ugly. For managing multiple parameters, I figured I should use an [AudioProcessorValueTreeState](https://www.juce.com/doc/tutorial_audio_processor_value_tree_state) object anyway. Let's keep that for later. I want to make the control one-dimensional anyway.
+
+### 6. one-knob control
+
+I guess there are two ways for doing that: either bake the control reduction into gen~ , or implement a preset interpolation mechanism (ie save multiple state, and interpolate with a 1D control). Obviously, the first is simpler.
+
+1. Hard-wired 1D reduction: some quick sound design to set a unique "knob" parameter. Accidentally added a connection that added some crunchiness that I liked, so it's now baked in. Not sure it sounds like a chorus anymore. But hey, allowing happy accidents is the purpose of all this.
+
+
+
+
+
+
+
+
 
 
 

@@ -27,10 +27,7 @@ public:
     void paint (Graphics&) override;
     void resized() override;
     
-    Slider rateSlider;
-     Slider centerSlider;
-     Slider bwSlider;
-     Slider fbSlider;
+    Slider knobSlider;
 
 private:
     // This reference is provided as a quick way for your editor to

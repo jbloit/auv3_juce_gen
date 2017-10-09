@@ -40,10 +40,8 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
         m_OutputBuffers[i] = NULL;
     }
     
-    addParameter (rate = new AudioParameterFloat ("rate", "Rate", 0.0f, 10.0f, 0.0f));
-     addParameter (fb = new AudioParameterFloat ("fb", "Feedback", 0.0f, 1.0f, 0.0f));
-     addParameter (bw = new AudioParameterFloat ("bw", "band width", 0.0f, 20000.0, 0.0f));
-     addParameter (center = new AudioParameterFloat ("center", "Center", 0.0f, 2000.0, 0.0f));
+    addParameter (knob = new AudioParameterFloat ("knob", "Knob", 0.0f, 1.0f, 0.0f));
+
     
     // Note: this is only displayed in console when running the standalone target. Not the extension target within host.
     std::cout << "constructor";
@@ -176,12 +174,8 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
             memset(m_InputBuffers[i], 0, m_CurrentBufferSize *  sizeof(double));
         }
     }
-    
 
-//    GenChorus::setparameter(m_C74PluginState, 0, bw->get(), NULL);
-    GenChorus::setparameter(m_C74PluginState, 1, center->get(), NULL);
-    GenChorus::setparameter(m_C74PluginState, 2, fb->get(), NULL);
-//    GenChorus::setparameter(m_C74PluginState, 3, rate->get(), NULL);
+    GenChorus::setparameter(m_C74PluginState, 3, knob->get(), NULL);
     
     // process audio
     GenChorus::perform(m_C74PluginState,
@@ -224,7 +218,7 @@ void Chorus_auv3AudioProcessor::getStateInformation (MemoryBlock& destData)
     
     MemoryOutputStream stream (destData, true);
     
-    stream.writeFloat (*rate);
+    stream.writeFloat (*knob);
 }
 
 void Chorus_auv3AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
@@ -234,7 +228,7 @@ void Chorus_auv3AudioProcessor::setStateInformation (const void* data, int sizeI
     
     MemoryInputStream stream (data, static_cast<size_t> (sizeInBytes), false);
     
-    rate->setValueNotifyingHost (stream.readFloat());
+    knob->setValueNotifyingHost (stream.readFloat());
 }
 
 //==============================================================================
