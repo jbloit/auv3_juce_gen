@@ -80,7 +80,7 @@ Getting confused here, too many variables. I'll start fresh with a new plugin co
 
 I guess there are two ways for doing that: either bake the control reduction into gen~ , or implement a preset interpolation mechanism (ie save multiple state, and interpolate with a 1D control). Obviously, the first is simpler.
 
-1. Hard-wired 1D reduction: some quick sound design to set a unique "knob" parameter. Accidentally added a connection that added some crunchiness that I liked, so it's now baked in. Not sure it sounds like a chorus anymore. But hey, allowing happy accidents is the purpose of all this.
+1. Hard-wired 1D reduction: some quick sound design to set a unique "knob" parameter. Accidentally added a connection that added some crunchiness that I liked, so it's now baked in. Not sure it sounds like a chorus anymore. But allowing happy accidents is the purpose of all this.
 
 
 
