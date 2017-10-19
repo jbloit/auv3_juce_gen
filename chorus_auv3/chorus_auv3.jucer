@@ -7,7 +7,7 @@
               buildAUv3="1" buildRTAS="0" buildAAX="0" buildStandalone="1"
               enableIAA="0" pluginName="chorus_auv3" pluginDesc="chorus_auv3"
               pluginManufacturer="yourcompany" pluginManufacturerCode="Manu"
-              pluginCode="Xxjd" pluginChannelConfigs="" pluginIsSynth="0" pluginWantsMidiIn="0"
+              pluginCode="Xxjd" pluginChannelConfigs="" pluginIsSynth="0" pluginWantsMidiIn="1"
               pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="chorus_auv3AU" pluginRTASCategory="" aaxIdentifier="com.yourcompany.chorus_auv3"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.1.2">

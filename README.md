@@ -93,6 +93,9 @@ Copied logic from tutorial
 3. load state when hitting a button
 yes. I. did. it.
 
+4. toggle state with midi notes
+
+
 
 
 

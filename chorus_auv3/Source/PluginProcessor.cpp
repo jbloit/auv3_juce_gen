@@ -175,12 +175,38 @@ bool Chorus_auv3AudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 
 void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
+    
+    // ------------------ MIDI processing
+    int time;
+    MidiMessage m;
+    for (MidiBuffer::Iterator i (midiMessages); i.getNextEvent (m, time);)
+    {
+        if (m.isNoteOn())
+        {
+            uint8 pitch = m.getNoteNumber();
+            if (pitch % 2 == 0) {
+                parameters.state = state1;
+            }
+            else parameters.state = state2;
+        }
+        else if (m.isNoteOff())
+        {
+        }
+        else if (m.isAftertouch())
+        {
+        }
+        else if (m.isPitchWheel())
+        {
+        }
+        
+    }
+    
+    
+    
+    
     ScopedNoDenormals noDenormals;
     const int totalNumInputChannels  = getTotalNumInputChannels();
     const int totalNumOutputChannels = getTotalNumOutputChannels();
-    
-    
-    
     
     // ------------------- GEN code starts here
     assureBufferSize(buffer.getNumSamples());
