@@ -60,11 +60,10 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     
-    // Gen chorus parameter
-//    AudioParameterFloat* knob;
-    
     // Parameters
     AudioProcessorValueTreeState parameters;
+    ValueTree state1 = ValueTree (Identifier ("state1"));
+    ValueTree state2 = ValueTree (Identifier ("state1"));
     
 protected:
     // c74: since Juce does float sample processing and Gen offers double sample

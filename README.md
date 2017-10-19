@@ -90,8 +90,8 @@ Copied logic from tutorial
 
 2. Add 2 buttons for testing
 
-
-
+3. load state when hitting a button
+yes. I. did. it.
 
 
 

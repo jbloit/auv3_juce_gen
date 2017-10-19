@@ -70,11 +70,13 @@ void Chorus_auv3AudioProcessorEditor::resized(){
 
 void Chorus_auv3AudioProcessorEditor::buttonClicked (Button* button){
     if (button == &button1){
+        processor.setCurrentProgram(1);
         std::printf("button1\n");
-        
     }
     if (button == &button2){
+        processor.setCurrentProgram(2);
         std::printf("button2\n");
+        
     }
 }
 

@@ -52,6 +52,7 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
                                       nullptr,
                                       nullptr);
 
+    parameters.state = state1;
     
     // Note: this is only displayed in console when running the standalone target. Not the extension target within host.
     std::cout << "constructor";
@@ -111,8 +112,19 @@ int Chorus_auv3AudioProcessor::getCurrentProgram()
     return 0;
 }
 
-void Chorus_auv3AudioProcessor::setCurrentProgram (int index)
-{
+void Chorus_auv3AudioProcessor::setCurrentProgram (int index){
+    
+    switch(index) {
+        case 1 :
+            parameters.state = state1;
+            break;
+        
+        case 2 :
+            parameters.state = state2;
+            break;
+    }
+    String s = parameters.state.toXmlString();
+    
 }
 
 const String Chorus_auv3AudioProcessor::getProgramName (int index)
