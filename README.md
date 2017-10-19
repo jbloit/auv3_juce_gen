@@ -88,6 +88,7 @@ Another way I'd like to control this, is to switch between presets when a new mi
 1. replace parameter handling with AudioProcessorValueTreeState
 Copied logic from tutorial
 
+2. Add 2 buttons for testing
 
 
 

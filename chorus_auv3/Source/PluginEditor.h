@@ -20,8 +20,8 @@
 
 
 
-class Chorus_auv3AudioProcessorEditor  : public AudioProcessorEditor
-{
+class Chorus_auv3AudioProcessorEditor  : public AudioProcessorEditor,
+                                         public Button::Listener {
 public:
     Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor&, AudioProcessorValueTreeState&);
     ~Chorus_auv3AudioProcessorEditor();
@@ -37,6 +37,10 @@ private:
     AudioProcessorValueTreeState& valueTreeState;
     Slider knobSlider;
     ScopedPointer<SliderAttachment> knobAttachment;
+    
+    TextButton button1;
+    TextButton button2;
+    void buttonClicked (Button* button) override;
     
     
     // This reference is provided as a quick way for your editor to
