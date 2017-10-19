@@ -82,6 +82,16 @@ I guess there are two ways for doing that: either bake the control reduction int
 
 1. Hard-wired 1D reduction: some quick sound design to set a unique "knob" parameter. Accidentally added a connection that added some crunchiness that I liked, so it's now baked in. Not sure it sounds like a chorus anymore. But allowing happy accidents is the purpose of all this.
 
+### 7. Save and recall states
+Another way I'd like to control this, is to switch between presets when a new midi note message comes in. It looks like it's time for using ```AudioProcessorValueTreeState```.
+
+1. replace parameter handling with AudioProcessorValueTreeState
+Copied logic from tutorial
+
+
+
+
+
 
 
 

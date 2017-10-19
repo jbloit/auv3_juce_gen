@@ -17,28 +17,33 @@
 //==============================================================================
 /**
 */
-class Chorus_auv3AudioProcessorEditor  : public AudioProcessorEditor, public Slider::Listener, private Timer
+
+
+
+class Chorus_auv3AudioProcessorEditor  : public AudioProcessorEditor
 {
 public:
-    Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor&);
+    Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor&, AudioProcessorValueTreeState&);
     ~Chorus_auv3AudioProcessorEditor();
 
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
     
-    Slider knobSlider;
-
+    typedef AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
+    
 private:
+    
+    AudioProcessorValueTreeState& valueTreeState;
+    Slider knobSlider;
+    ScopedPointer<SliderAttachment> knobAttachment;
+    
+    
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     Chorus_auv3AudioProcessor& processor;
-    void timerCallback() override;
-    void sliderValueChanged (Slider*) override;
 
 
-    
-    AudioProcessorParameter* getParameter (const String& paramId);
     float getParameterValue (const String& paramId);
     void setParameterValue (const String& paramId, float value);
     

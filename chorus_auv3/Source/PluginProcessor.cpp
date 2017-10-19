@@ -22,7 +22,9 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       ), m_CurrentBufferSize(0)
+                       ),   parameters (*this, nullptr),
+                        m_CurrentBufferSize(0)
+
 #endif
 {
     
@@ -40,7 +42,15 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
         m_OutputBuffers[i] = NULL;
     }
     
-    addParameter (knob = new AudioParameterFloat ("knob", "Knob", 0.0f, 1.0f, 0.0f));
+    
+    // --
+    parameters.createAndAddParameter ("knob",       // parameterID
+                                      "Knob",       // parameter name
+                                      String(),     // parameter label (suffix)
+                                      NormalisableRange<float> (0.0f, 1.0f),    // range
+                                      0.0f,         // default value
+                                      nullptr,
+                                      nullptr);
 
     
     // Note: this is only displayed in console when running the standalone target. Not the extension target within host.
@@ -175,7 +185,8 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         }
     }
 
-    GenChorus::setparameter(m_C74PluginState, 3, knob->get(), NULL);
+    const float currentKnob = *parameters.getRawParameterValue ("knob");
+    GenChorus::setparameter(m_C74PluginState, 3, currentKnob, NULL);
     
     // process audio
     GenChorus::perform(m_C74PluginState,
@@ -206,7 +217,7 @@ bool Chorus_auv3AudioProcessor::hasEditor() const
 
 AudioProcessorEditor* Chorus_auv3AudioProcessor::createEditor()
 {
-    return new Chorus_auv3AudioProcessorEditor (*this);
+    return new Chorus_auv3AudioProcessorEditor (*this, parameters);
 }
 
 //==============================================================================
@@ -216,19 +227,14 @@ void Chorus_auv3AudioProcessor::getStateInformation (MemoryBlock& destData)
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
     
-    MemoryOutputStream stream (destData, true);
-    
-    stream.writeFloat (*knob);
+    ScopedPointer<XmlElement> xml (parameters.state.createXml());
+    copyXmlToBinary (*xml, destData);
 }
 
 void Chorus_auv3AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
-    
-    MemoryInputStream stream (data, static_cast<size_t> (sizeInBytes), false);
-    
-    knob->setValueNotifyingHost (stream.readFloat());
 }
 
 //==============================================================================

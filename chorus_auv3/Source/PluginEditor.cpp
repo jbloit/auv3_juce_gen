@@ -13,20 +13,20 @@
 
 
 //==============================================================================
-Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor& p)
-: AudioProcessorEditor (&p), processor (p), knobSlider (Slider::LinearHorizontal, Slider::NoTextBox)
+
+
+
+Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor& p, AudioProcessorValueTreeState& vts)
+: AudioProcessorEditor (&p), valueTreeState (vts), processor (p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     
-    knobSlider.setValue (getParameterValue ("knob"), NotificationType::dontSendNotification);
-    knobSlider.addListener (this);
-    knobSlider.setRange (0.0, 1.0);
+    knobAttachment = new SliderAttachment (valueTreeState, "knob", knobSlider);
     addAndMakeVisible (knobSlider);
     
-    
     setSize (600, 400);
-    startTimer (100);
+
 }
 
 Chorus_auv3AudioProcessorEditor::~Chorus_auv3AudioProcessorEditor()
@@ -58,47 +58,3 @@ void Chorus_auv3AudioProcessorEditor::resized(){
     knobSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
 }
 
-void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider* slider){
-    if (slider == &knobSlider){
-        setParameterValue ("knob", knobSlider.getValue());
-    }
-}
-
-void Chorus_auv3AudioProcessorEditor::timerCallback()  {
-    knobSlider.setValue (getParameterValue ("knob"), NotificationType::dontSendNotification);
-}
-
-//==============================================================================
-AudioProcessorParameter* Chorus_auv3AudioProcessorEditor::getParameter (const String& paramId)
-{
-    if (AudioProcessor* processor = getAudioProcessor())
-    {
-        const OwnedArray<AudioProcessorParameter>& params = processor->getParameters();
-        
-        for (int i = 0; i < params.size(); ++i)
-        {
-            if (AudioProcessorParameterWithID* param = dynamic_cast<AudioProcessorParameterWithID*> (params[i]))
-            {
-                if (param->paramID == paramId)
-                    return param;
-            }
-        }
-    }
-    
-    return nullptr;
-}
-
-//==============================================================================
-float Chorus_auv3AudioProcessorEditor::getParameterValue (const String& paramId)
-{
-    if (AudioProcessorParameter* param = getParameter (paramId))
-        return param->getValue();
-    
-    return 0.0f;
-}
-
-void Chorus_auv3AudioProcessorEditor::setParameterValue (const String& paramId, float value)
-{
-    if (AudioProcessorParameter* param = getParameter (paramId))
-        param->setValueNotifyingHost (value);
-}
