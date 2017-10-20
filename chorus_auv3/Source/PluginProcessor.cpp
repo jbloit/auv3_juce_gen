@@ -189,16 +189,12 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
             }
             else parameters.state = state2;
         }
-        else if (m.isNoteOff())
-        {
+        else if (m.isController()){
+            uint8 ccValue = m.getControllerValue();
+            Value knob = parameters.state.getPropertyAsValue("knob", NULL);
+            knob = ccValue / 127.0f;
+            parameters.state.setProperty("knob", knob, NULL);
         }
-        else if (m.isAftertouch())
-        {
-        }
-        else if (m.isPitchWheel())
-        {
-        }
-        
     }
     
     
