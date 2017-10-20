@@ -52,14 +52,27 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
                                       nullptr,
                                       nullptr);
 
-    parameters.state = state1;
+    parameters.state = state6;
     parameters.state = state2;
+    parameters.state = state3;
+    parameters.state = state4;
+    parameters.state = state5;
+    parameters.state = state1;
+    
     
     ValueTree knob1Tree = state1.getChildWithProperty ("id", "knob");
     ValueTree knob2Tree = state2.getChildWithProperty ("id", "knob");
+    ValueTree knob3Tree = state3.getChildWithProperty ("id", "knob");
+    ValueTree knob4Tree = state4.getChildWithProperty ("id", "knob");
+    ValueTree knob5Tree = state5.getChildWithProperty ("id", "knob");
+    ValueTree knob6Tree = state6.getChildWithProperty ("id", "knob");
     
     knob1Cache.referTo (knob1Tree, "value", nullptr);
     knob2Cache.referTo (knob2Tree, "value", nullptr);
+    knob3Cache.referTo (knob3Tree, "value", nullptr);
+    knob4Cache.referTo (knob4Tree, "value", nullptr);
+    knob5Cache.referTo (knob5Tree, "value", nullptr);
+    knob6Cache.referTo (knob6Tree, "value", nullptr);
 }
 
 Chorus_auv3AudioProcessor::~Chorus_auv3AudioProcessor()
@@ -117,7 +130,7 @@ int Chorus_auv3AudioProcessor::getCurrentProgram()
 }
 
 void Chorus_auv3AudioProcessor::setCurrentProgram (int index){
-    
+    printf("------- step %d \n\n", index);
     switch(index) {
         case 1 :
             parameters.state = state1;
@@ -125,6 +138,20 @@ void Chorus_auv3AudioProcessor::setCurrentProgram (int index){
         
         case 2 :
             parameters.state = state2;
+            break;
+        case 3 :
+            parameters.state = state3;
+            break;
+            
+        case 4 :
+            parameters.state = state4;
+            break;
+        case 5 :
+            parameters.state = state5;
+            break;
+            
+        case 6 :
+            parameters.state = state6;
             break;
     }
     String s = parameters.state.toXmlString();
@@ -188,22 +215,34 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         if (m.isNoteOn())
         {
             uint8 pitch = m.getNoteNumber();
-            if (pitch % 2 == 0) {
-                parameters.state = state1;
-            }
-            else parameters.state = state2;
+            stepIndex += 1;
+            stepIndex = stepIndex % 6;
+            setCurrentProgram(stepIndex + 1);
+
         }
         else if (m.isController()){
             uint8 ccValue = m.getControllerValue();
             
+            float normval = 48.0;
+            
             if (parameters.state == state1){
-                knob1Cache = ccValue / 127.0;
-//                knob1Cache.setValue(ccValue / 127.0, NULL);
+                knob1Cache = ccValue / normval;
+            }
+            if (parameters.state == state2){
+                knob2Cache = ccValue / normval;
+            }
+            if (parameters.state == state3){
+                knob3Cache = ccValue / normval;
+            }
+            if (parameters.state == state4){
+                knob4Cache = ccValue / normval;
+            }
+            if (parameters.state == state5){
+                knob5Cache = ccValue / normval;
             }
             
-            if (parameters.state == state2){
-                knob2Cache = ccValue / 127.0;
-//                knob2Cache.setValue(ccValue / 127.0, NULL);
+            if (parameters.state == state6){
+                knob6Cache = ccValue / normval;
             }
         }
     }

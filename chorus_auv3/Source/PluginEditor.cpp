@@ -32,6 +32,22 @@ Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3Aud
     addAndMakeVisible(button2);
     button2.addListener(this);
     
+    button3.setButtonText("3");
+    addAndMakeVisible(button3);
+    button3.addListener(this);
+    
+    button4.setButtonText("4");
+    addAndMakeVisible(button4);
+    button4.addListener(this);
+    
+    button5.setButtonText("5");
+    addAndMakeVisible(button5);
+    button5.addListener(this);
+    
+    button6.setButtonText("6");
+    addAndMakeVisible(button6);
+    button6.addListener(this);
+    
     setSize (600, 400);
 }
 
@@ -54,6 +70,10 @@ void Chorus_auv3AudioProcessorEditor::resized(){
     
     button1.setBounds (100, 40, 40, 40);
     button2.setBounds (150, 40, 40, 40);
+    button3.setBounds (200, 40, 40, 40);
+    button4.setBounds (250, 40, 40, 40);
+    button5.setBounds (300, 40, 40, 40);
+    button6.setBounds (350, 40, 40, 40);
     
     Rectangle<int> r = getLocalBounds();
     
@@ -76,7 +96,22 @@ void Chorus_auv3AudioProcessorEditor::buttonClicked (Button* button){
     if (button == &button2){
         processor.setCurrentProgram(2);
         std::printf("button2\n");
-        
+    }
+    if (button == &button3){
+        processor.setCurrentProgram(3);
+        std::printf("button3\n");
+    }
+    if (button == &button4){
+        processor.setCurrentProgram(4);
+        std::printf("button4\n");
+    }
+    if (button == &button5){
+        processor.setCurrentProgram(5);
+        std::printf("button5\n");
+    }
+    if (button == &button6){
+        processor.setCurrentProgram(6);
+        std::printf("button6\n");
     }
 }
 

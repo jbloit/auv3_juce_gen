@@ -40,6 +40,10 @@ private:
     
     TextButton button1;
     TextButton button2;
+     TextButton button3;
+     TextButton button4;
+     TextButton button5;
+     TextButton button6;
     void buttonClicked (Button* button) override;
     
     

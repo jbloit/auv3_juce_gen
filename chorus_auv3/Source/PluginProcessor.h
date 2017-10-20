@@ -66,6 +66,16 @@ public:
     CachedValue<float> knob1Cache;
     ValueTree state2 = ValueTree (Identifier ("state2"));
     CachedValue<float> knob2Cache;
+    ValueTree state3 = ValueTree (Identifier ("state3"));
+    CachedValue<float> knob3Cache;
+    ValueTree state4 = ValueTree (Identifier ("state4"));
+    CachedValue<float> knob4Cache;
+    ValueTree state5 = ValueTree (Identifier ("state5"));
+    CachedValue<float> knob5Cache;
+    ValueTree state6 = ValueTree (Identifier ("state6"));
+    CachedValue<float> knob6Cache;
+    
+    
     
 protected:
     // c74: since Juce does float sample processing and Gen offers double sample
@@ -73,6 +83,9 @@ protected:
     void assureBufferSize(long bufferSize);
     
 private:
+    
+    int stepIndex = 0;
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Chorus_auv3AudioProcessor)
     
