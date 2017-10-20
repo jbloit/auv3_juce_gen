@@ -97,14 +97,14 @@ yes. I. did. it.
 
 4. toggle state with midi notes
 
-### Not thread safe?
+### 8. Not thread safe?
 I'm trying to change the state of some value tree param, from the process block. What I'm trying to do is to set parameters based on the incoming midi controller. It's working when I change states, but the parameters themselves are not updated.
 
-Found [this thread](https://forum.juce.com/t/update-audioprocessorvaluetreestate-from-process-block/17958/12) on the forum. There seems to be some workaround code. But also some **big red flag** raised by Jules, the main developer. It's not thread safe to work with the value tree on in the audio thread. Need to use CachedValue instead. He also suggests working with a Synthesizer class instead of handling the midi messages yourself. 
+Found [this thread](https://forum.juce.com/t/update-audioprocessorvaluetreestate-from-process-block/17958/12) on the forum. There seems to be some workaround code. But also some **big red flag** raised by Jules, the main developer. It's not thread safe to work with the value tree on in the audio thread. Need to use CachedValue instead. He also suggests working with a Synthesizer class instead of handling the midi messages yourself.
 
 I'm not really sure what to decide right now. It looks like the value tree thing could backfire at some point. I should maybe keep it simpler: with the one knob approach, I only have 2 parameters anyway: one for a state, and one for the actual knob value. Maybe I should go back to the parameters approach, keep it simpler and safe. The one-knob approach is a nice constraint anyway.
 
-
+1. implemented the cachedValue mechanism. It's working now (ie parameters update from audio thread - triggered my midi events). 
 
 
 
