@@ -1,4 +1,6 @@
-# Goal
+# Development log
+
+## Goal
 Make an AUV3 audio effect that I can load into an iOS plugin host for AUV3s, like [AUM](http://kymatica.com/Software/AUM). I want basic MIDI control over one or two parameters of the plugin. I want to implement this using
 
 * [gen](https://docs.cycling74.com/max7/vignettes/gen_overview) : so I can develop in an interactive environment, and generate cross-platform code. I guess Faust is also a good candidate, but I have less experience with it.
