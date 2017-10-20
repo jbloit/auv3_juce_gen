@@ -63,7 +63,9 @@ public:
     // Parameters
     AudioProcessorValueTreeState parameters;
     ValueTree state1 = ValueTree (Identifier ("state1"));
+    CachedValue<float> knob1Cache;
     ValueTree state2 = ValueTree (Identifier ("state2"));
+    CachedValue<float> knob2Cache;
     
 protected:
     // c74: since Juce does float sample processing and Gen offers double sample

@@ -53,9 +53,13 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
                                       nullptr);
 
     parameters.state = state1;
+    parameters.state = state2;
     
-    // Note: this is only displayed in console when running the standalone target. Not the extension target within host.
-    std::cout << "constructor";
+    ValueTree knob1Tree = state1.getChildWithProperty ("id", "knob");
+    ValueTree knob2Tree = state2.getChildWithProperty ("id", "knob");
+    
+    knob1Cache.referTo (knob1Tree, "value", nullptr);
+    knob2Cache.referTo (knob2Tree, "value", nullptr);
 }
 
 Chorus_auv3AudioProcessor::~Chorus_auv3AudioProcessor()
@@ -191,9 +195,16 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         }
         else if (m.isController()){
             uint8 ccValue = m.getControllerValue();
-            Value knob = parameters.state.getPropertyAsValue("knob", NULL);
-            knob = ccValue / 127.0f;
-            parameters.state.setProperty("knob", knob, NULL);
+            
+            if (parameters.state == state1){
+                knob1Cache = ccValue / 127.0;
+//                knob1Cache.setValue(ccValue / 127.0, NULL);
+            }
+            
+            if (parameters.state == state2){
+                knob2Cache = ccValue / 127.0;
+//                knob2Cache.setValue(ccValue / 127.0, NULL);
+            }
         }
     }
     
