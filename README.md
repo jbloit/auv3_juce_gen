@@ -104,7 +104,13 @@ Found [this thread](https://forum.juce.com/t/update-audioprocessorvaluetreestate
 
 I'm not really sure what to decide right now. It looks like the value tree thing could backfire at some point. I should maybe keep it simpler: with the one knob approach, I only have 2 parameters anyway: one for a state, and one for the actual knob value. Maybe I should go back to the parameters approach, keep it simpler and safe. The one-knob approach is a nice constraint anyway.
 
-1. implemented the cachedValue mechanism. It's working now (ie parameters update from audio thread - triggered my midi events). 
+1. implemented the cachedValue mechanism. It's working now (ie parameters update from audio thread - triggered my midi events).
+
+### 9. Better recording of steps
+
+1. Distinguish between an edit mode and a play mode. During edit mode, the control is played directly, but not being recorded to a state unless a noteOn message is received. In play mode, the current state is used to control the audio, and a noteOn message triggers the step increment.
+
+
 
 
 

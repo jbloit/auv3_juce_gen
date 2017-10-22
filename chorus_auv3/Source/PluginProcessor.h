@@ -85,6 +85,10 @@ protected:
 private:
     
     int stepIndex = 0;
+    bool editMode = false;
+    uint8 lastCCValue = 0;
+    float normval = 48.0;
+    float knobValue = 0;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Chorus_auv3AudioProcessor)

@@ -130,32 +130,29 @@ int Chorus_auv3AudioProcessor::getCurrentProgram()
 }
 
 void Chorus_auv3AudioProcessor::setCurrentProgram (int index){
-    printf("------- step %d \n\n", index);
+    
+    stepIndex = index;
+    
     switch(index) {
         case 1 :
             parameters.state = state1;
             break;
-        
         case 2 :
             parameters.state = state2;
             break;
         case 3 :
             parameters.state = state3;
             break;
-            
         case 4 :
             parameters.state = state4;
             break;
         case 5 :
             parameters.state = state5;
             break;
-            
         case 6 :
             parameters.state = state6;
             break;
     }
-    String s = parameters.state.toXmlString();
-    
 }
 
 const String Chorus_auv3AudioProcessor::getProgramName (int index)
@@ -214,41 +211,45 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
     {
         if (m.isNoteOn())
         {
-            uint8 pitch = m.getNoteNumber();
-            stepIndex += 1;
-            stepIndex = stepIndex % 6;
-            setCurrentProgram(stepIndex + 1);
-
+            if (editMode){
+                switch (stepIndex) {
+                    case 0:
+                        knob1Cache = lastCCValue / normval;
+                        break;
+                    case 1:
+                        knob2Cache = lastCCValue / normval;
+                        break;
+                    case 2:
+                        knob3Cache = lastCCValue / normval;
+                        break;
+                    case 3:
+                        knob4Cache = lastCCValue / normval;
+                        break;
+                    case 4:
+                        knob5Cache = lastCCValue / normval;
+                        break;
+                    case 5:
+                        knob6Cache = lastCCValue / normval;
+                        break;
+                    default:
+                        break;
+                }
+                stepIndex += 1;
+                stepIndex = stepIndex % 6;
+            }
+            else {
+                stepIndex += 1;
+                stepIndex = stepIndex % 6;
+                setCurrentProgram(stepIndex);
+            }
+    
         }
         else if (m.isController()){
             uint8 ccValue = m.getControllerValue();
-            
-            float normval = 48.0;
-            
-            if (parameters.state == state1){
-                knob1Cache = ccValue / normval;
-            }
-            if (parameters.state == state2){
-                knob2Cache = ccValue / normval;
-            }
-            if (parameters.state == state3){
-                knob3Cache = ccValue / normval;
-            }
-            if (parameters.state == state4){
-                knob4Cache = ccValue / normval;
-            }
-            if (parameters.state == state5){
-                knob5Cache = ccValue / normval;
-            }
-            
-            if (parameters.state == state6){
-                knob6Cache = ccValue / normval;
-            }
+            (ccValue > 0) ? editMode = true : editMode = false;
+            lastCCValue = ccValue;
         }
     }
-    
-    
-    
     
     ScopedNoDenormals noDenormals;
     const int totalNumInputChannels  = getTotalNumInputChannels();
@@ -268,9 +269,14 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
             memset(m_InputBuffers[i], 0, m_CurrentBufferSize *  sizeof(double));
         }
     }
-
-    const float currentKnob = *parameters.getRawParameterValue ("knob");
-    GenChorus::setparameter(m_C74PluginState, 3, currentKnob, NULL);
+    
+    if (editMode){
+        knobValue = lastCCValue / normval;
+    } else {
+        knobValue = *parameters.getRawParameterValue ("knob");
+    }
+    
+    GenChorus::setparameter(m_C74PluginState, 3, knobValue, NULL);
     
     // process audio
     GenChorus::perform(m_C74PluginState,
