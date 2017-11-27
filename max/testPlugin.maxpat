@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 54.0, 99.0, 885.0, 484.0 ],
+		"rect" : [ 54.0, 99.0, 760.0, 302.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -85,7 +85,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 653.0, 214.5, 24.0, 24.0 ],
-					"presentation_rect" : [ 653.0, 180.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -312,7 +311,7 @@
 							"version" : 1,
 							"isbank" : 0,
 							"isbase64" : 1,
-							"blob" : "305.hAGaoMGcv.C1AHv.DTfAGfPBJrvDTTgEWvUag4VclE1XzUmbkIGUjEFcgwUYrUVak4Fcs3VXsU1UyUmXzkGbkckckI2bo8laTQWdvU1WP7fZ0MVYPwVcmklaSQWXzUFUtEVakIQSg4VcOAAE..............P..HiS1A....fzLzfCQDULQISzO.QTvTURtAWczE8CRX0S0QGb0QmDXgmZjAA.RDVcsY1SPrjUCISHBA...vybzEFckQiO7.UPRETSfjFY8HxZt8lXh.hcgwVck0iHv3BMzjSN4jSN3fCL2jCL2DCLzPSNxHxK9vyKyQWXzUFM9..THjgIqfCPH0zWjkFfEdXhL5HkW54nkpJ9........AD..........X....................jO"
+							"blob" : "213.hAGaoMGcv.y0AHv.DTfAGfPBJHwDTTAWsEla0YVXiQWcxUlbTQVXzEFWkwVYsUlaz0hag0VYWMWchQWdvU1U1Ulbyk1atQEc4AWYT4VXsUlDMEla08DDT...............AXy+yc6O....Ru.CM.QTwDkLQ6vCQASUI4Fb0QWzNDgUOUGcvUGcRfEdpQFD.HQX00lYXUkazkFcrUFYHbAIoXiOFsDTUwVbyUGd5A3fJ9XjVB.......DP..........XA...................vmêêú"
 						}
 ,
 						"snapshotlist" : 						{
@@ -334,7 +333,7 @@
 										"version" : 1,
 										"isbank" : 0,
 										"isbase64" : 1,
-										"blob" : "305.hAGaoMGcv.C1AHv.DTfAGfPBJrvDTTgEWvUag4VclE1XzUmbkIGUjEFcgwUYrUVak4Fcs3VXsU1UyUmXzkGbkckckI2bo8laTQWdvU1WP7fZ0MVYPwVcmklaSQWXzUFUtEVakIQSg4VcOAAE..............P..HiS1A....fzLzfCQDULQISzO.QTvTURtAWczE8CRX0S0QGb0QmDXgmZjAA.RDVcsY1SPrjUCISHBA...vybzEFckQiO7.UPRETSfjFY8HxZt8lXh.hcgwVck0iHv3BMzjSN4jSN3fCL2jCL2DCLzPSNxHxK9vyKyQWXzUFM9..THjgIqfCPH0zWjkFfEdXhL5HkW54nkpJ9........AD..........X....................jO"
+										"blob" : "213.hAGaoMGcv.y0AHv.DTfAGfPBJHwDTTAWsEla0YVXiQWcxUlbTQVXzEFWkwVYsUlaz0hag0VYWMWchQWdvU1U1Ulbyk1atQEc4AWYT4VXsUlDMEla08DDT...............AXy+yc6O....Ru.CM.QTwDkLQ6vCQASUI4Fb0QWzNDgUOUGcvUGcRfEdpQFD.HQX00lYXUkazkFcrUFYHbAIoXiOFsDTUwVbyUGd5A3fJ9XjVB.......DP..........XA...................vmêêú"
 									}
 ,
 									"fileref" : 									{

@@ -11,10 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
-
 #include "GenChorus.h"
-
 
 //==============================================================================
 /**
@@ -58,24 +55,7 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    
-    
-    // Parameters
-    AudioProcessorValueTreeState parameters;
-    ValueTree state1 = ValueTree (Identifier ("state1"));
-    CachedValue<float> knob1Cache;
-    ValueTree state2 = ValueTree (Identifier ("state2"));
-    CachedValue<float> knob2Cache;
-    ValueTree state3 = ValueTree (Identifier ("state3"));
-    CachedValue<float> knob3Cache;
-    ValueTree state4 = ValueTree (Identifier ("state4"));
-    CachedValue<float> knob4Cache;
-    ValueTree state5 = ValueTree (Identifier ("state5"));
-    CachedValue<float> knob5Cache;
-    ValueTree state6 = ValueTree (Identifier ("state6"));
-    CachedValue<float> knob6Cache;
-    
-    
+    int steppedLen = 0;         // Length of recorded steps
     
 protected:
     // c74: since Juce does float sample processing and Gen offers double sample
@@ -83,18 +63,23 @@ protected:
     void assureBufferSize(long bufferSize);
     
 private:
+    AudioParameterFloat* knobParam;  // The one and only knob parameter
+    AudioParameterBool* editParam;   // User is recording steps?
     
-    int stepIndex = 0;
+    Array<float> knobSteps;     // Stores knob value for each step
+    const int maxNbSteps = 15;  // Maximum number of steps to store
+    
+    
+    int stepIndex = 0;          // Current step index to read or write
+    float currentKnobValue = 0;
     bool editMode = false;
-    uint8 lastCCValue = 0;
+    bool prevEditMode = false;
     float normval = 48.0;
-    float knobValue = 0;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Chorus_auv3AudioProcessor)
     
     CommonState				*m_C74PluginState;
-    
     long					m_CurrentBufferSize;
     t_sample				**m_InputBuffers;
     t_sample				**m_OutputBuffers;

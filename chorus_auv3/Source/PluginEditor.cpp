@@ -11,44 +11,33 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-
 //==============================================================================
 
-Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor& p,
-                                                                  AudioProcessorValueTreeState& vts)
-: AudioProcessorEditor (&p), valueTreeState (vts), processor (p)
+Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor& p)
+: AudioProcessorEditor (&p),
+    knobSlider (Slider::LinearHorizontal, Slider::NoTextBox),
+    processor (p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
+    auto bounds = getBounds();
     
-    knobAttachment = new SliderAttachment (valueTreeState, "knob", knobSlider);
+    knobSlider.addListener(this);
+    knobSlider.setRange(0.0, 1.0);
     addAndMakeVisible (knobSlider);
     
-    button1.setButtonText("1");
-    addAndMakeVisible(button1);
-    button1.addListener(this);
+
+    steppedLenLabel.setBounds(0, 0, 100, 40);
+    steppedLenLabel.setText("0", NotificationType::sendNotification);
+    addAndMakeVisible(steppedLenLabel);
     
-    button2.setButtonText("2");
-    addAndMakeVisible(button2);
-    button2.addListener(this);
+    editModeButton.addListener(this);
+    editModeButton.setBounds(120, 0, 40, 40);
+    addAndMakeVisible(editModeButton);
     
-    button3.setButtonText("3");
-    addAndMakeVisible(button3);
-    button3.addListener(this);
     
-    button4.setButtonText("4");
-    addAndMakeVisible(button4);
-    button4.addListener(this);
-    
-    button5.setButtonText("5");
-    addAndMakeVisible(button5);
-    button5.addListener(this);
-    
-    button6.setButtonText("6");
-    addAndMakeVisible(button6);
-    button6.addListener(this);
-    
-    setSize (600, 400);
+    setSize (600, 200);
+    startTimer (100);
 }
 
 Chorus_auv3AudioProcessorEditor::~Chorus_auv3AudioProcessorEditor()
@@ -65,20 +54,11 @@ void Chorus_auv3AudioProcessorEditor::paint (Graphics& g)
     g.setFont (15.0f);
     g.drawFittedText ("This is an effect built with gen", getLocalBounds(), Justification::centred, 1);
 }
-
+#pragma mark -- callbacks
 void Chorus_auv3AudioProcessorEditor::resized(){
-    
-    button1.setBounds (100, 40, 40, 40);
-    button2.setBounds (150, 40, 40, 40);
-    button3.setBounds (200, 40, 40, 40);
-    button4.setBounds (250, 40, 40, 40);
-    button5.setBounds (300, 40, 40, 40);
-    button6.setBounds (350, 40, 40, 40);
-    
-    Rectangle<int> r = getLocalBounds();
-    
-    int guiElementAreaHeight = r.getHeight() / 3;
 
+    Rectangle<int> r = getLocalBounds();
+    int guiElementAreaHeight = r.getHeight() / 3;
     
     int margin = guiElementAreaHeight / 4;
     r.reduce (margin, margin);
@@ -88,30 +68,73 @@ void Chorus_auv3AudioProcessorEditor::resized(){
     knobSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
 }
 
-void Chorus_auv3AudioProcessorEditor::buttonClicked (Button* button){
-    if (button == &button1){
-        processor.setCurrentProgram(1);
-        std::printf("button1\n");
-    }
-    if (button == &button2){
-        processor.setCurrentProgram(2);
-        std::printf("button2\n");
-    }
-    if (button == &button3){
-        processor.setCurrentProgram(3);
-        std::printf("button3\n");
-    }
-    if (button == &button4){
-        processor.setCurrentProgram(4);
-        std::printf("button4\n");
-    }
-    if (button == &button5){
-        processor.setCurrentProgram(5);
-        std::printf("button5\n");
-    }
-    if (button == &button6){
-        processor.setCurrentProgram(6);
-        std::printf("button6\n");
-    }
+void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider*){
+    setParameterValue ("knobParam", knobSlider.getValue());
 }
+
+void Chorus_auv3AudioProcessorEditor::buttonClicked (Button*){
+
+
+}
+void Chorus_auv3AudioProcessorEditor::buttonStateChanged (Button* button){
+    
+    
+    switch (button->getState()) {
+        case juce::Button::buttonDown:
+            printf("buttonDown \n");
+            break;
+        case juce::Button::buttonOver:
+            printf("buttonOver \n");
+            break;
+        case juce::Button::buttonNormal:
+            printf("buttonNormal \n");
+            break;
+    }
+
+}
+
+
+//==============================================================================
+void Chorus_auv3AudioProcessorEditor::timerCallback()
+{
+    knobSlider.setValue (getParameterValue ("knobParam"), NotificationType::dontSendNotification);
+    steppedLenLabel.setText(String(processor.steppedLen), NotificationType::dontSendNotification);
+    
+}
+
+//==============================================================================
+AudioProcessorParameter* Chorus_auv3AudioProcessorEditor::getParameter (const String& paramId)
+{
+    if (AudioProcessor* processor = getAudioProcessor())
+    {
+        const OwnedArray<AudioProcessorParameter>& params = processor->getParameters();
+        
+        for (int i = 0; i < params.size(); ++i)
+        {
+            if (AudioProcessorParameterWithID* param = dynamic_cast<AudioProcessorParameterWithID*> (params[i]))
+            {
+                if (param->paramID == paramId)
+                    return param;
+            }
+        }
+    }
+    
+    return nullptr;
+}
+
+//==============================================================================
+float Chorus_auv3AudioProcessorEditor::getParameterValue (const String& paramId)
+{
+    if (AudioProcessorParameter* param = getParameter (paramId))
+        return param->getValue();
+    
+    return 0.0f;
+}
+
+void Chorus_auv3AudioProcessorEditor::setParameterValue (const String& paramId, float value)
+{
+    if (AudioProcessorParameter* param = getParameter (paramId))
+        param->setValueNotifyingHost (value);
+}
+
 

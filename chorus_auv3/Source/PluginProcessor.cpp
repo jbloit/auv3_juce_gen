@@ -1,29 +1,28 @@
 /*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
+ ==============================================================================
+ 
+ This file was auto-generated!
+ 
+ It contains the basic framework code for a JUCE plugin processor.
+ 
+ ==============================================================================
+ */
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-
 //==============================================================================
 Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
-                     #if ! JucePlugin_IsMidiEffect
-                      #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  AudioChannelSet::stereo(), true)
-                      #endif
-                       .withOutput ("Output", AudioChannelSet::stereo(), true)
-                     #endif
-                       ),   parameters (*this, nullptr),
-                        m_CurrentBufferSize(0)
+: AudioProcessor (BusesProperties()
+#if ! JucePlugin_IsMidiEffect
+#if ! JucePlugin_IsSynth
+                  .withInput  ("Input",  AudioChannelSet::stereo(), true)
+#endif
+                  .withOutput ("Output", AudioChannelSet::stereo(), true)
+#endif
+                  ),
+m_CurrentBufferSize(0)
 
 #endif
 {
@@ -43,36 +42,10 @@ Chorus_auv3AudioProcessor::Chorus_auv3AudioProcessor()
     }
     
     
-    // --
-    parameters.createAndAddParameter ("knob",       // parameterID
-                                      "Knob",       // parameter name
-                                      String(),     // parameter label (suffix)
-                                      NormalisableRange<float> (0.0f, 1.0f),    // range
-                                      0.0f,         // default value
-                                      nullptr,
-                                      nullptr);
-
-    parameters.state = state6;
-    parameters.state = state2;
-    parameters.state = state3;
-    parameters.state = state4;
-    parameters.state = state5;
-    parameters.state = state1;
-    
-    
-    ValueTree knob1Tree = state1.getChildWithProperty ("id", "knob");
-    ValueTree knob2Tree = state2.getChildWithProperty ("id", "knob");
-    ValueTree knob3Tree = state3.getChildWithProperty ("id", "knob");
-    ValueTree knob4Tree = state4.getChildWithProperty ("id", "knob");
-    ValueTree knob5Tree = state5.getChildWithProperty ("id", "knob");
-    ValueTree knob6Tree = state6.getChildWithProperty ("id", "knob");
-    
-    knob1Cache.referTo (knob1Tree, "value", nullptr);
-    knob2Cache.referTo (knob2Tree, "value", nullptr);
-    knob3Cache.referTo (knob3Tree, "value", nullptr);
-    knob4Cache.referTo (knob4Tree, "value", nullptr);
-    knob5Cache.referTo (knob5Tree, "value", nullptr);
-    knob6Cache.referTo (knob6Tree, "value", nullptr);
+    // ---------------------------- Parameters
+    addParameter (knobParam = new AudioParameterFloat ("knobParam", "Knob", 0.0f, 1.0f, 0.5f));
+    addParameter (editParam = new AudioParameterBool ("editParam", "Edit", false, "Edit Label"));
+    knobSteps.resize(maxNbSteps);
 }
 
 Chorus_auv3AudioProcessor::~Chorus_auv3AudioProcessor()
@@ -81,6 +54,7 @@ Chorus_auv3AudioProcessor::~Chorus_auv3AudioProcessor()
 }
 
 //==============================================================================
+#pragma mark ---
 const String Chorus_auv3AudioProcessor::getName() const
 {
     return JucePlugin_Name;
@@ -88,29 +62,29 @@ const String Chorus_auv3AudioProcessor::getName() const
 
 bool Chorus_auv3AudioProcessor::acceptsMidi() const
 {
-   #if JucePlugin_WantsMidiInput
+#if JucePlugin_WantsMidiInput
     return true;
-   #else
+#else
     return false;
-   #endif
+#endif
 }
 
 bool Chorus_auv3AudioProcessor::producesMidi() const
 {
-   #if JucePlugin_ProducesMidiOutput
+#if JucePlugin_ProducesMidiOutput
     return true;
-   #else
+#else
     return false;
-   #endif
+#endif
 }
 
 bool Chorus_auv3AudioProcessor::isMidiEffect() const
 {
-   #if JucePlugin_IsMidiEffect
+#if JucePlugin_IsMidiEffect
     return true;
-   #else
+#else
     return false;
-   #endif
+#endif
 }
 
 double Chorus_auv3AudioProcessor::getTailLengthSeconds() const
@@ -121,7 +95,7 @@ double Chorus_auv3AudioProcessor::getTailLengthSeconds() const
 int Chorus_auv3AudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
-                // so this should be at least 1, even if you're not really implementing programs.
+    // so this should be at least 1, even if you're not really implementing programs.
 }
 
 int Chorus_auv3AudioProcessor::getCurrentProgram()
@@ -130,29 +104,7 @@ int Chorus_auv3AudioProcessor::getCurrentProgram()
 }
 
 void Chorus_auv3AudioProcessor::setCurrentProgram (int index){
-    
-    stepIndex = index;
-    
-    switch(index) {
-        case 1 :
-            parameters.state = state1;
-            break;
-        case 2 :
-            parameters.state = state2;
-            break;
-        case 3 :
-            parameters.state = state3;
-            break;
-        case 4 :
-            parameters.state = state4;
-            break;
-        case 5 :
-            parameters.state = state5;
-            break;
-        case 6 :
-            parameters.state = state6;
-            break;
-    }
+
 }
 
 const String Chorus_auv3AudioProcessor::getProgramName (int index)
@@ -164,7 +116,9 @@ void Chorus_auv3AudioProcessor::changeProgramName (int index, const String& newN
 {
 }
 
+
 //==============================================================================
+#pragma mark ---
 void Chorus_auv3AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
@@ -180,29 +134,42 @@ void Chorus_auv3AudioProcessor::releaseResources()
 #ifndef JucePlugin_PreferredChannelConfigurations
 bool Chorus_auv3AudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
-  #if JucePlugin_IsMidiEffect
+#if JucePlugin_IsMidiEffect
     ignoreUnused (layouts);
     return true;
-  #else
+#else
     // This is the place where you check if the layout is supported.
     // In this template code we only support mono or stereo.
     if (layouts.getMainOutputChannelSet() != AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
+        && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
         return false;
-
+    
     // This checks if the input layout matches the output layout
-   #if ! JucePlugin_IsSynth
+#if ! JucePlugin_IsSynth
     if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
         return false;
-   #endif
-
+#endif
+    
     return true;
-  #endif
+#endif
 }
 #endif
 
 void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
+    
+    editMode = editParam->get();
+    
+    // detect mode change
+    if (prevEditMode != editMode){
+        if (editMode){
+            // reset step sequence
+            stepIndex = 0;
+            steppedLen = 0;
+        }
+    }
+    prevEditMode = editMode;
+    
     
     // ------------------ MIDI processing
     int time;
@@ -212,43 +179,26 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         if (m.isNoteOn())
         {
             if (editMode){
-                switch (stepIndex) {
-                    case 0:
-                        knob1Cache = lastCCValue / normval;
-                        break;
-                    case 1:
-                        knob2Cache = lastCCValue / normval;
-                        break;
-                    case 2:
-                        knob3Cache = lastCCValue / normval;
-                        break;
-                    case 3:
-                        knob4Cache = lastCCValue / normval;
-                        break;
-                    case 4:
-                        knob5Cache = lastCCValue / normval;
-                        break;
-                    case 5:
-                        knob6Cache = lastCCValue / normval;
-                        break;
-                    default:
-                        break;
-                }
+                // Record steps
+                knobSteps.set(stepIndex, knobParam->get());
                 stepIndex += 1;
-                stepIndex = stepIndex % 6;
+                stepIndex = stepIndex % maxNbSteps;
+                steppedLen = stepIndex;
             }
             else {
-                stepIndex += 1;
-                stepIndex = stepIndex % 6;
-                setCurrentProgram(stepIndex);
+                // Step through steps, recall
+                if (steppedLen > 0){
+                    stepIndex += 1;
+                    stepIndex = stepIndex % steppedLen;
+                    knobParam->setValueNotifyingHost(knobSteps[stepIndex]);
+                }
             }
-    
         }
-        else if (m.isController()){
-            uint8 ccValue = m.getControllerValue();
-            (ccValue > 0) ? editMode = true : editMode = false;
-            lastCCValue = ccValue;
-        }
+//        else if (m.isController()){
+//            uint8 ccValue = m.getControllerValue();
+//            (ccValue > 0) ? editMode = true : editMode = false;
+//            lastCCValue = ccValue;
+//        }
     }
     
     ScopedNoDenormals noDenormals;
@@ -270,21 +220,17 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         }
     }
     
-    if (editMode){
-        knobValue = lastCCValue / normval;
-    } else {
-        knobValue = *parameters.getRawParameterValue ("knob");
-    }
-    
-    GenChorus::setparameter(m_C74PluginState, 3, knobValue, NULL);
+    currentKnobValue = knobParam->get();
+
+    GenChorus::setparameter(m_C74PluginState, 3, currentKnobValue, NULL);
     
     // process audio
     GenChorus::perform(m_C74PluginState,
-                           m_InputBuffers,
-                           GenChorus::num_inputs(),
-                           m_OutputBuffers,
-                           GenChorus::num_outputs(),
-                           buffer.getNumSamples());
+                       m_InputBuffers,
+                       GenChorus::num_inputs(),
+                       m_OutputBuffers,
+                       GenChorus::num_outputs(),
+                       buffer.getNumSamples());
     
     // fill output buffers
     for (int i = 0; i < totalNumOutputChannels; i++) {
@@ -296,7 +242,7 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
             buffer.clear (i, 0, buffer.getNumSamples());
         }
     }
-
+    
 }
 
 //==============================================================================
@@ -307,7 +253,7 @@ bool Chorus_auv3AudioProcessor::hasEditor() const
 
 AudioProcessorEditor* Chorus_auv3AudioProcessor::createEditor()
 {
-    return new Chorus_auv3AudioProcessorEditor (*this, parameters);
+    return new Chorus_auv3AudioProcessorEditor (*this);
 }
 
 //==============================================================================
@@ -316,9 +262,6 @@ void Chorus_auv3AudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-    
-    ScopedPointer<XmlElement> xml (parameters.state.createXml());
-    copyXmlToBinary (*xml, destData);
 }
 
 void Chorus_auv3AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
@@ -335,7 +278,11 @@ AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 }
 
 //==============================================================================
-// C74 added methods
+#pragma mark -- helpers
+
+
+//==============================================================================
+#pragma mark -- C74 added methods
 
 void Chorus_auv3AudioProcessor::assureBufferSize(long bufferSize)
 {

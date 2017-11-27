@@ -21,9 +21,12 @@
 
 
 class Chorus_auv3AudioProcessorEditor  : public AudioProcessorEditor,
-                                         public Button::Listener {
+                                         public Slider::Listener,
+                                         public Button::Listener,
+                                         private Timer
+{
 public:
-    Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor&, AudioProcessorValueTreeState&);
+    Chorus_auv3AudioProcessorEditor (Chorus_auv3AudioProcessor&);
     ~Chorus_auv3AudioProcessorEditor();
 
     //==============================================================================
@@ -33,27 +36,22 @@ public:
     typedef AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
     
 private:
-    
-    AudioProcessorValueTreeState& valueTreeState;
     Slider knobSlider;
-    ScopedPointer<SliderAttachment> knobAttachment;
+    ToggleButton editModeButton;
     
-    TextButton button1;
-    TextButton button2;
-     TextButton button3;
-     TextButton button4;
-     TextButton button5;
-     TextButton button6;
-    void buttonClicked (Button* button) override;
-    
-    
+    Label steppedLenLabel;
+    void sliderValueChanged (Slider*) override;
+    void buttonClicked(Button*) override;
+    void buttonStateChanged(Button*) override;
+
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     Chorus_auv3AudioProcessor& processor;
-
-
+    void timerCallback() override;
+    AudioProcessorParameter* getParameter (const String& paramId);
     float getParameterValue (const String& paramId);
     void setParameterValue (const String& paramId, float value);
+
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Chorus_auv3AudioProcessorEditor)
 };
