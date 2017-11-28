@@ -18,8 +18,6 @@
 /**
 */
 
-
-
 class Chorus_auv3AudioProcessorEditor  : public AudioProcessorEditor,
                                          public Slider::Listener,
                                          public Button::Listener,
@@ -42,7 +40,6 @@ private:
     Label steppedLenLabel;
     void sliderValueChanged (Slider*) override;
     void buttonClicked(Button*) override;
-    void buttonStateChanged(Button*) override;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
@@ -52,6 +49,5 @@ private:
     float getParameterValue (const String& paramId);
     void setParameterValue (const String& paramId, float value);
 
-    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Chorus_auv3AudioProcessorEditor)
 };

@@ -26,7 +26,6 @@ Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3Aud
     knobSlider.setRange(0.0, 1.0);
     addAndMakeVisible (knobSlider);
     
-
     steppedLenLabel.setBounds(0, 0, 100, 40);
     steppedLenLabel.setText("0", NotificationType::sendNotification);
     addAndMakeVisible(steppedLenLabel);
@@ -34,7 +33,6 @@ Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3Aud
     editModeButton.addListener(this);
     editModeButton.setBounds(120, 0, 40, 40);
     addAndMakeVisible(editModeButton);
-    
     
     setSize (600, 200);
     startTimer (100);
@@ -73,33 +71,15 @@ void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider*){
 }
 
 void Chorus_auv3AudioProcessorEditor::buttonClicked (Button*){
-
-
+    processor.editMode = editModeButton.getToggleState();
 }
-void Chorus_auv3AudioProcessorEditor::buttonStateChanged (Button* button){
-    
-    
-    switch (button->getState()) {
-        case juce::Button::buttonDown:
-            printf("buttonDown \n");
-            break;
-        case juce::Button::buttonOver:
-            printf("buttonOver \n");
-            break;
-        case juce::Button::buttonNormal:
-            printf("buttonNormal \n");
-            break;
-    }
-
-}
-
 
 //==============================================================================
 void Chorus_auv3AudioProcessorEditor::timerCallback()
 {
     knobSlider.setValue (getParameterValue ("knobParam"), NotificationType::dontSendNotification);
     steppedLenLabel.setText(String(processor.steppedLen), NotificationType::dontSendNotification);
-    
+    editModeButton.setToggleState(processor.editMode, NotificationType::dontSendNotification);
 }
 
 //==============================================================================
@@ -127,14 +107,12 @@ float Chorus_auv3AudioProcessorEditor::getParameterValue (const String& paramId)
 {
     if (AudioProcessorParameter* param = getParameter (paramId))
         return param->getValue();
-    
     return 0.0f;
 }
+
 
 void Chorus_auv3AudioProcessorEditor::setParameterValue (const String& paramId, float value)
 {
     if (AudioProcessorParameter* param = getParameter (paramId))
         param->setValueNotifyingHost (value);
 }
-
-

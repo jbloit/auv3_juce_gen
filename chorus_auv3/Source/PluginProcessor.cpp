@@ -41,10 +41,8 @@ m_CurrentBufferSize(0)
         m_OutputBuffers[i] = NULL;
     }
     
-    
     // ---------------------------- Parameters
     addParameter (knobParam = new AudioParameterFloat ("knobParam", "Knob", 0.0f, 1.0f, 0.5f));
-    addParameter (editParam = new AudioParameterBool ("editParam", "Edit", false, "Edit Label"));
     knobSteps.resize(maxNbSteps);
 }
 
@@ -157,8 +155,7 @@ bool Chorus_auv3AudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 
 void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-    
-    editMode = editParam->get();
+    (knobParam->get() > 0.0) ? editMode = false : editMode = true;
     
     // detect mode change
     if (prevEditMode != editMode){
@@ -242,7 +239,6 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
             buffer.clear (i, 0, buffer.getNumSamples());
         }
     }
-    
 }
 
 //==============================================================================

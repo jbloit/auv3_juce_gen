@@ -56,6 +56,7 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     int steppedLen = 0;         // Length of recorded steps
+    bool editMode = false;
     
 protected:
     // c74: since Juce does float sample processing and Gen offers double sample
@@ -64,15 +65,12 @@ protected:
     
 private:
     AudioParameterFloat* knobParam;  // The one and only knob parameter
-    AudioParameterBool* editParam;   // User is recording steps?
     
     Array<float> knobSteps;     // Stores knob value for each step
     const int maxNbSteps = 15;  // Maximum number of steps to store
     
-    
     int stepIndex = 0;          // Current step index to read or write
     float currentKnobValue = 0;
-    bool editMode = false;
     bool prevEditMode = false;
     float normval = 48.0;
     
