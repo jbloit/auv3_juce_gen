@@ -39,6 +39,8 @@ private:
     
     Label steppedLenLabel;
     void sliderValueChanged (Slider*) override;
+    void sliderDragStarted (Slider*) override;
+    void sliderDragEnded (Slider*) override;
     void buttonClicked(Button*) override;
 
     // This reference is provided as a quick way for your editor to

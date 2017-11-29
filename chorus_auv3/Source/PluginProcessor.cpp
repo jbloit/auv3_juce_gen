@@ -155,7 +155,7 @@ bool Chorus_auv3AudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 
 void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-    (knobParam->get() > 0.0) ? editMode = false : editMode = true;
+//    (knobParam->get() > 0.0) ? editMode = false : editMode = true;
     
     // detect mode change
     if (prevEditMode != editMode){
@@ -169,34 +169,34 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
     
     
     // ------------------ MIDI processing
-    int time;
-    MidiMessage m;
-    for (MidiBuffer::Iterator i (midiMessages); i.getNextEvent (m, time);)
-    {
-        if (m.isNoteOn())
-        {
-            if (editMode){
-                // Record steps
-                knobSteps.set(stepIndex, knobParam->get());
-                stepIndex += 1;
-                stepIndex = stepIndex % maxNbSteps;
-                steppedLen = stepIndex;
-            }
-            else {
-                // Step through steps, recall
-                if (steppedLen > 0){
-                    stepIndex += 1;
-                    stepIndex = stepIndex % steppedLen;
-                    knobParam->setValueNotifyingHost(knobSteps[stepIndex]);
-                }
-            }
-        }
-//        else if (m.isController()){
-//            uint8 ccValue = m.getControllerValue();
-//            (ccValue > 0) ? editMode = true : editMode = false;
-//            lastCCValue = ccValue;
+//    int time;
+//    MidiMessage m;
+//    for (MidiBuffer::Iterator i (midiMessages); i.getNextEvent (m, time);)
+//    {
+//        if (m.isNoteOn())
+//        {
+//            if (editMode){
+//                // Record steps
+//                knobSteps.set(stepIndex, knobParam->get());
+//                stepIndex += 1;
+//                stepIndex = stepIndex % maxNbSteps;
+//                steppedLen = stepIndex;
+//            }
+//            else {
+//                // Step through steps, recall
+//                if (steppedLen > 0){
+//                    stepIndex += 1;
+//                    stepIndex = stepIndex % steppedLen;
+//                    knobParam->setValueNotifyingHost(knobSteps[stepIndex]);
+//                }
+//            }
 //        }
-    }
+////        else if (m.isController()){
+////            uint8 ccValue = m.getControllerValue();
+////            (ccValue > 0) ? editMode = true : editMode = false;
+////            lastCCValue = ccValue;
+////        }
+//    }
     
     ScopedNoDenormals noDenormals;
     const int totalNumInputChannels  = getTotalNumInputChannels();

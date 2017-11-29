@@ -65,7 +65,12 @@ void Chorus_auv3AudioProcessorEditor::resized(){
     
     knobSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
 }
-
+void Chorus_auv3AudioProcessorEditor::sliderDragStarted (Slider*){
+    processor.editMode = true;
+}
+void Chorus_auv3AudioProcessorEditor::sliderDragEnded (Slider*){
+    processor.editMode = false;
+}
 void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider*){
     setParameterValue ("knobParam", knobSlider.getValue());
 }
