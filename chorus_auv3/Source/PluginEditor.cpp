@@ -78,7 +78,7 @@ void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider*){
 }
 
 void Chorus_auv3AudioProcessorEditor::buttonClicked (Button*){
-    processor.editMode = editModeButton.getToggleState();
+
 }
 
 void Chorus_auv3AudioProcessorEditor::audioProcessorParameterChangeGestureBegin(AudioProcessor* p, int parameterIndex){

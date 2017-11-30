@@ -161,15 +161,14 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
 //    (knobParam->get() > 0.0) ? editMode = false : editMode = true;
     
     // detect mode change
-    if (prevEditMode != editMode){
-        if (editMode){
+    if (prevEditMode != editParam->get()){
+        if (editParam->get()){
             // reset step sequence
             stepIndex = 0;
             steppedLen = 0;
         }
     }
-    prevEditMode = editMode;
-
+    prevEditMode = editParam->get();
     
     // ------------------ MIDI processing
     int time;

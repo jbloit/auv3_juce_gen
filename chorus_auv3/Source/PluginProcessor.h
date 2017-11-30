@@ -56,7 +56,6 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     int steppedLen = 0;         // Length of recorded steps
-    bool editMode = false;
     
 protected:
     // c74: since Juce does float sample processing and Gen offers double sample
