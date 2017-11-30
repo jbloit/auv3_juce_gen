@@ -67,7 +67,7 @@ private:
     AudioParameterBool* editParam;   // True if in edit mode
     
     Array<float> knobSteps;     // Stores knob value for each step
-    const int maxNbSteps = 15;  // Maximum number of steps to store
+    const int maxNbSteps = 256;  // Maximum number of steps to store
     
     int stepIndex = 0;          // Current step index to read or write
     float currentKnobValue = 0;

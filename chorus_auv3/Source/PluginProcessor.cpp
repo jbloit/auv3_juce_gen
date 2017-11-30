@@ -43,7 +43,7 @@ m_CurrentBufferSize(0)
     
     // ---------------------------- Parameters
     addParameter (knobParam = new AudioParameterFloat ("knobParam", "Knob", 0.0f, 1.0f, 0.5f));
-    addParameter (knobParam = new AudioParameterFloat ("editParam", "Edit", 0.0f, 1.0f, 0.5f));
+    addParameter (editParam = new AudioParameterBool("editParam", "Edit", false, "Edit label"));
     knobSteps.resize(maxNbSteps);
 }
 
@@ -179,22 +179,23 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         {
             knobValueChangesCount = 0;
             
-//            if (editMode){
-//                // Record steps
-//                knobSteps.set(stepIndex, knobParam->get());
-//                stepIndex += 1;
-//                stepIndex = stepIndex % maxNbSteps;
-//                steppedLen = stepIndex;
-//            }
-//            else {
-//                // Step through steps, recall
-//                if (steppedLen > 0){
-//                    stepIndex += 1;
-//                    stepIndex = stepIndex % steppedLen;
-//                    knobParam->setValueNotifyingHost(knobSteps[stepIndex]);
-//                }
+            if (editParam->get()){
+                // Record steps
+                knobSteps.set(stepIndex, knobParam->get());
+                stepIndex += 1;
+                stepIndex = stepIndex % maxNbSteps;
+                steppedLen = stepIndex;
+            }
+            else {
+                // Step through steps, recall
+                if (steppedLen > 0){
+                    stepIndex += 1;
+                    stepIndex = stepIndex % steppedLen;
+                    knobParam->setValueNotifyingHost(knobSteps[stepIndex]);
+                }
             }
         }
+    }
 
     
     ScopedNoDenormals noDenormals;
