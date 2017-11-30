@@ -43,6 +43,7 @@ m_CurrentBufferSize(0)
     
     // ---------------------------- Parameters
     addParameter (knobParam = new AudioParameterFloat ("knobParam", "Knob", 0.0f, 1.0f, 0.5f));
+    addParameter (knobParam = new AudioParameterFloat ("editParam", "Edit", 0.0f, 1.0f, 0.5f));
     knobSteps.resize(maxNbSteps);
 }
 
@@ -155,6 +156,8 @@ bool Chorus_auv3AudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 
 void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
+    
+    currentKnobValue = knobParam->get();
 //    (knobParam->get() > 0.0) ? editMode = false : editMode = true;
     
     // detect mode change
@@ -166,15 +169,17 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         }
     }
     prevEditMode = editMode;
-    
+
     
     // ------------------ MIDI processing
-//    int time;
-//    MidiMessage m;
-//    for (MidiBuffer::Iterator i (midiMessages); i.getNextEvent (m, time);)
-//    {
-//        if (m.isNoteOn())
-//        {
+    int time;
+    MidiMessage m;
+    for (MidiBuffer::Iterator i (midiMessages); i.getNextEvent (m, time);)
+    {
+        if (m.isNoteOn())
+        {
+            knobValueChangesCount = 0;
+            
 //            if (editMode){
 //                // Record steps
 //                knobSteps.set(stepIndex, knobParam->get());
@@ -189,14 +194,9 @@ void Chorus_auv3AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
 //                    stepIndex = stepIndex % steppedLen;
 //                    knobParam->setValueNotifyingHost(knobSteps[stepIndex]);
 //                }
-//            }
-//        }
-////        else if (m.isController()){
-////            uint8 ccValue = m.getControllerValue();
-////            (ccValue > 0) ? editMode = true : editMode = false;
-////            lastCCValue = ccValue;
-////        }
-//    }
+            }
+        }
+
     
     ScopedNoDenormals noDenormals;
     const int totalNumInputChannels  = getTotalNumInputChannels();

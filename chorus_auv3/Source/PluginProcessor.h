@@ -65,14 +65,19 @@ protected:
     
 private:
     AudioParameterFloat* knobParam;  // The one and only knob parameter
+    AudioParameterBool* editParam;   // True if in edit mode
     
     Array<float> knobSteps;     // Stores knob value for each step
     const int maxNbSteps = 15;  // Maximum number of steps to store
     
     int stepIndex = 0;          // Current step index to read or write
     float currentKnobValue = 0;
+    float prev_knobValue = 0;
+    int knobValueChangesCount = 0;
     bool prevEditMode = false;
     float normval = 48.0;
+    
+    
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Chorus_auv3AudioProcessor)

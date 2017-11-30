@@ -10,7 +10,8 @@
               pluginCode="Xxjd" pluginChannelConfigs="" pluginIsSynth="0" pluginWantsMidiIn="1"
               pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="chorus_auv3AU" pluginRTASCategory="" aaxIdentifier="com.yourcompany.chorus_auv3"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.1.2">
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.2.0"
+              companyCopyright="">
   <MAINGROUP id="UauiSh" name="chorus_auv3">
     <GROUP id="{58EEACB7-5B58-112E-0347-E91C7417E1DD}" name="Source">
       <FILE id="Pimv0t" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -46,9 +47,11 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="chorus_auv3"
-                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"/>
+                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"
+                       enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="chorus_auv3"
-                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"/>
+                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"
+                       enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../LIBS/JUCE/modules"/>
@@ -68,14 +71,17 @@
         <MODULEPATH id="juce_audio_utils" path="../../../LIBS/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portraitlandscape">
+    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portraitlandscape"
+                  iPadScreenOrientation="portraitlandscape" iosDeviceFamily="1,2">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="chorus_auv3"
                        plistPreprocessorDefinitions="&lt;plist&gt;&#10;  &lt;dict&gt;&#10;    &lt;key&gt;LSRequiresIPhoneOS&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;UIViewControllerBasedStatusBarAppearance&lt;/key&gt;&#10;    &lt;false/&gt;&#10;    &lt;key&gt;CFBundleExecutable&lt;/key&gt;&#10;    &lt;string&gt;${EXECUTABLE_NAME}&lt;/string&gt;&#10;    &lt;key&gt;CFBundleIdentifier&lt;/key&gt;&#10;    &lt;string&gt;$(PRODUCT_BUNDLE_IDENTIFIER)&lt;/string&gt;&#10;    &lt;key&gt;CFBundleName&lt;/key&gt;&#10;    &lt;string&gt;chorus_auv3&lt;/string&gt;&#10;    &lt;key&gt;CFBundleDisplayName&lt;/key&gt;&#10;    &lt;string&gt;chorus_auv3&lt;/string&gt;&#10;    &lt;key&gt;CFBundlePackageType&lt;/key&gt;&#10;    &lt;string&gt;APPL&lt;/string&gt;&#10;    &lt;key&gt;CFBundleSignature&lt;/key&gt;&#10;    &lt;string&gt;????&lt;/string&gt;&#10;    &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;&#10;    &lt;string&gt;1.0.0&lt;/string&gt;&#10;    &lt;key&gt;CFBundleVersion&lt;/key&gt;&#10;    &lt;string&gt;1.0.0&lt;/string&gt;&#10;    &lt;key&gt;NSHumanReadableCopyright&lt;/key&gt;&#10;    &lt;string&gt;&lt;/string&gt;&#10;    &lt;key&gt;NSHighResolutionCapable&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;UIRequiresFullScreen&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;UIStatusBarHidden&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;NSMicrophoneUsageDescription&lt;/key&gt;&#10;    &lt;string&gt;Audio FX needs mic input.&lt;/string&gt;&#10;    &lt;key&gt;UISupportedInterfaceOrientations&lt;/key&gt;&#10;    &lt;array&gt;&#10;      &lt;string&gt;UIInterfaceOrientationPortrait&lt;/string&gt;&#10;      &lt;string&gt;UIInterfaceOrientationLandscapeLeft&lt;/string&gt;&#10;      &lt;string&gt;UIInterfaceOrientationLandscapeRight&lt;/string&gt;&#10;    &lt;/array&gt;&#10;    &lt;key&gt;UIBackgroundModes&lt;/key&gt;&#10;    &lt;array/&gt;&#10;  &lt;/dict&gt;&#10;&lt;/plist&gt;&#10;"
-                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"/>
+                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"
+                       enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="chorus_auv3"
                        plistPreprocessorDefinitions="&lt;plist&gt;&#10;  &lt;dict&gt;&#10;    &lt;key&gt;LSRequiresIPhoneOS&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;UIViewControllerBasedStatusBarAppearance&lt;/key&gt;&#10;    &lt;false/&gt;&#10;    &lt;key&gt;CFBundleExecutable&lt;/key&gt;&#10;    &lt;string&gt;${EXECUTABLE_NAME}&lt;/string&gt;&#10;    &lt;key&gt;CFBundleIdentifier&lt;/key&gt;&#10;    &lt;string&gt;$(PRODUCT_BUNDLE_IDENTIFIER)&lt;/string&gt;&#10;    &lt;key&gt;CFBundleName&lt;/key&gt;&#10;    &lt;string&gt;chorus_auv3&lt;/string&gt;&#10;    &lt;key&gt;CFBundleDisplayName&lt;/key&gt;&#10;    &lt;string&gt;chorus_auv3&lt;/string&gt;&#10;    &lt;key&gt;CFBundlePackageType&lt;/key&gt;&#10;    &lt;string&gt;APPL&lt;/string&gt;&#10;    &lt;key&gt;CFBundleSignature&lt;/key&gt;&#10;    &lt;string&gt;????&lt;/string&gt;&#10;    &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;&#10;    &lt;string&gt;1.0.0&lt;/string&gt;&#10;    &lt;key&gt;CFBundleVersion&lt;/key&gt;&#10;    &lt;string&gt;1.0.0&lt;/string&gt;&#10;    &lt;key&gt;NSHumanReadableCopyright&lt;/key&gt;&#10;    &lt;string&gt;&lt;/string&gt;&#10;    &lt;key&gt;NSHighResolutionCapable&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;UIRequiresFullScreen&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;UIStatusBarHidden&lt;/key&gt;&#10;    &lt;true/&gt;&#10;    &lt;key&gt;NSMicrophoneUsageDescription&lt;/key&gt;&#10;    &lt;string&gt;Audio FX needs mic input.&lt;/string&gt;&#10;    &lt;key&gt;UISupportedInterfaceOrientations&lt;/key&gt;&#10;    &lt;array&gt;&#10;      &lt;string&gt;UIInterfaceOrientationPortrait&lt;/string&gt;&#10;      &lt;string&gt;UIInterfaceOrientationLandscapeLeft&lt;/string&gt;&#10;      &lt;string&gt;UIInterfaceOrientationLandscapeRight&lt;/string&gt;&#10;    &lt;/array&gt;&#10;    &lt;key&gt;UIBackgroundModes&lt;/key&gt;&#10;    &lt;array/&gt;&#10;  &lt;/dict&gt;&#10;&lt;/plist&gt;"
-                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"/>
+                       headerPath="$(PROJECT_DIR)/../../exported-code&#10;$(PROJECT_DIR)/../../exported-code/gen_dsp"
+                       enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../LIBS/JUCE/modules"/>

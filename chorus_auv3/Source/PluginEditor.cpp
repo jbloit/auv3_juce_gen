@@ -34,6 +34,8 @@ Chorus_auv3AudioProcessorEditor::Chorus_auv3AudioProcessorEditor (Chorus_auv3Aud
     editModeButton.setBounds(120, 0, 40, 40);
     addAndMakeVisible(editModeButton);
     
+    p.AudioProcessor::addListener(this);
+    
     setSize (600, 200);
     startTimer (100);
 }
@@ -66,10 +68,10 @@ void Chorus_auv3AudioProcessorEditor::resized(){
     knobSlider.setBounds (r.removeFromTop (guiElementAreaHeight).withSizeKeepingCentre (r.getWidth(), buttonHeight));
 }
 void Chorus_auv3AudioProcessorEditor::sliderDragStarted (Slider*){
-    processor.editMode = true;
+//    processor.editMode = true;
 }
 void Chorus_auv3AudioProcessorEditor::sliderDragEnded (Slider*){
-    processor.editMode = false;
+//    processor.editMode = false;
 }
 void Chorus_auv3AudioProcessorEditor::sliderValueChanged (Slider*){
     setParameterValue ("knobParam", knobSlider.getValue());
@@ -79,12 +81,33 @@ void Chorus_auv3AudioProcessorEditor::buttonClicked (Button*){
     processor.editMode = editModeButton.getToggleState();
 }
 
+void Chorus_auv3AudioProcessorEditor::audioProcessorParameterChangeGestureBegin(AudioProcessor* p, int parameterIndex){
+    printf(" -- audioProcessorParameterChangeGestureBegin, param index %d \n", parameterIndex);
+//    processor.editMode = true;
+}
+
+void Chorus_auv3AudioProcessorEditor::audioProcessorParameterChangeGestureEnd(AudioProcessor* p, int parameterIndex){
+    printf(" ** audioProcessorParameterChangeGestureEnd, param index %d \n", parameterIndex);
+//    processor.editMode = false;
+}
+void Chorus_auv3AudioProcessorEditor::audioProcessorChanged (AudioProcessor* processor){
+//    printf(" ** audioProcessorChanged \n");
+}
+
+void Chorus_auv3AudioProcessorEditor::audioProcessorParameterChanged (AudioProcessor* processor,
+                                     int parameterIndex,
+                                     float newValue){
+//    printf(" ** audioProcessorParameterChanged %d : %f \n", parameterIndex, newValue);
+}
 //==============================================================================
 void Chorus_auv3AudioProcessorEditor::timerCallback()
 {
     knobSlider.setValue (getParameterValue ("knobParam"), NotificationType::dontSendNotification);
     steppedLenLabel.setText(String(processor.steppedLen), NotificationType::dontSendNotification);
-    editModeButton.setToggleState(processor.editMode, NotificationType::dontSendNotification);
+    
+    bool editMode;
+    getParameterValue ("editParam") > 0.0 ?  editMode = true : editMode = false;
+    editModeButton.setToggleState(editMode, NotificationType::dontSendNotification);
 }
 
 //==============================================================================

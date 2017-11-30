@@ -21,6 +21,7 @@
 class Chorus_auv3AudioProcessorEditor  : public AudioProcessorEditor,
                                          public Slider::Listener,
                                          public Button::Listener,
+                                         public AudioProcessorListener,
                                          private Timer
 {
 public:
@@ -42,7 +43,13 @@ private:
     void sliderDragStarted (Slider*) override;
     void sliderDragEnded (Slider*) override;
     void buttonClicked(Button*) override;
-
+    void audioProcessorParameterChangeGestureBegin(AudioProcessor* processor, int parameterIndex) override;
+    void audioProcessorParameterChangeGestureEnd(AudioProcessor* processor, int parameterIndex) override;
+    void audioProcessorChanged (AudioProcessor* processor) override;
+    void audioProcessorParameterChanged (AudioProcessor* processor,
+                                                 int parameterIndex,
+                                                 float newValue) override;
+    
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     Chorus_auv3AudioProcessor& processor;
